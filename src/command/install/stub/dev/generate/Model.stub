@@ -1,0 +1,61 @@
+<?php
+
+namespace app\controller\dev\generate;
+
+
+use huikedev\dev_admin\common\DevController;
+
+class Model extends DevController
+{
+    /*
+     * 模型列表
+     */
+    public function index()
+    {
+        return $this->response->render();
+    }
+
+    public function simpleList()
+    {
+        return $this->response->render();
+    }
+
+    /*
+     * 创建模型
+     */
+    public function create()
+    {
+        return $this->response->render();
+    }
+
+    /*
+     * 更新注解
+     */
+    public function updateAnnotation()
+    {
+        return $this->response->render();
+    }
+
+    public function delete()
+    {
+        return $this->response->render();
+    }
+
+    public function read()
+    {
+        return $this->response->render();
+    }
+
+    public function syncProperty()
+    {
+        return $this->response->render();
+    }
+
+    public function getFields()
+    {
+        return $this->response->render();
+    }
+
+
+// GENERATED END
+}

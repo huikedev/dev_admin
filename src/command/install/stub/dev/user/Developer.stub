@@ -1,0 +1,72 @@
+<?php
+
+namespace app\controller\dev\user;
+
+use huikedev\dev_admin\common\DevController;
+use huikedev\huike_base\exceptions\response\ResponseException;
+
+
+class Developer extends DevController
+{
+    
+
+	 /**
+	 * @desc 列表
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function index()
+	{
+		return $this->response->render();
+	}
+
+
+	 /**
+	 * @desc 修改
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function update()
+	{
+		return $this->response->render();
+	}
+
+
+	 /**
+	 * @desc 删除
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function delete()
+	{
+		return $this->response->render();
+	}
+
+
+	 /**
+	 * @desc 岗位列表
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function positionList()
+	{
+		return $this->response->render();
+	}
+
+
+	 /**
+	 * @desc 新增
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function create()
+	{
+		return $this->response->render();
+	}
+
+}

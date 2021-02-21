@@ -1,0 +1,72 @@
+<?php
+
+namespace app\controller\dev\system;
+
+use huikedev\dev_admin\common\DevController;
+use huikedev\huike_base\exceptions\response\ResponseException;
+
+
+class ControllerPath extends DevController
+{
+    
+
+	 /**
+	 * @desc 首页 首页
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function index()
+	{
+		return $this->response->render();
+	}
+
+
+	 /**
+	 * @desc 新增 新增
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function create()
+	{
+		return $this->response->render();
+	}
+
+
+	 /**
+	 * @desc 修改 修改
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function edit()
+	{
+		return $this->response->render();
+	}
+
+
+	 /**
+	 * @desc 删除 删除
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function delete()
+	{
+		return $this->response->render();
+	}
+
+
+	 /**
+	 * @desc 简单列表
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function simpleList()
+	{
+		return $this->response->render();
+	}
+
+}

@@ -1,0 +1,75 @@
+<?php
+
+
+namespace app\controller\dev\system;
+
+
+use huikedev\dev_admin\common\DevController;
+use huikedev\huike_base\exceptions\response\ResponseException;
+
+class Controllers extends DevController
+{
+    public function index()
+    {
+        return $this->response->render();
+    }
+
+    public function create()
+    {
+        return $this->response->render();
+    }
+
+    public function edit()
+    {
+        return $this->response->render();
+    }
+
+    public function delete()
+    {
+        return $this->response->render();
+    }
+
+    public function unSynced()
+    {
+        return $this->response->render();
+    }
+
+    public function sync()
+    {
+        return $this->response->render();
+    }
+
+    public function checkException()
+    {
+        return $this->response->render();
+    }
+
+    public function simpleList()
+    {
+        return $this->response->render();
+    }
+
+	 /**
+	 * @desc 前缀列表
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function prefix()
+	{
+		return $this->response->render();
+	}
+
+
+	 /**
+	 * @desc 控制器目录
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function pathList()
+	{
+		return $this->response->render();
+	}
+
+}

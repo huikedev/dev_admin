@@ -1,0 +1,145 @@
+
+	//======================开发辅助 - 登录======================
+	Route::group('login',function(){
+		//登录 - 登录
+		Route::post('index', 'index');
+	})->prefix('dev.user.Login/');
+
+	//======================开发辅助 - 用户======================
+	Route::group('user',function(){
+		//用户 - 用户详情
+		Route::get('getUserInfo', 'getUserInfo');
+	})->prefix('dev.user.User/');
+
+	//======================开发辅助 - 门面======================
+	Route::group('generate/facade',function(){
+		//门面 - 列表
+		Route::get('index', 'index');
+		//门面 - 新增
+		Route::post('create', 'create');
+		//门面 - 删除
+		Route::post('delete', 'delete');
+		//门面 - 刷新
+		Route::post('refresh', 'refresh');
+		//门面 - 刷新服务门面
+		Route::post('updateServiceFacade', 'updateServiceFacade');
+	})->prefix('dev.generate.Facade/');
+
+	//======================开发辅助 - 数据库迁移======================
+	Route::group('generate/migrate',function(){
+		//数据库迁移 - 新增
+		Route::post('create', 'create');
+		//数据库迁移 - 执行
+		Route::post('run', 'run');
+		//数据库迁移 - 表字段生成迁移文件
+		Route::post('tableToMigration', 'tableToMigration');
+		//数据库迁移 - 表数据生成种子文件
+		Route::post('tableToSeeds', 'tableToSeeds');
+	})->prefix('dev.generate.Migrate/');
+
+	//======================开发辅助 - 模型======================
+	Route::group('generate/model',function(){
+		//模型 - 列表
+		Route::get('index', 'index');
+		//模型 - 简单列表
+		Route::get('simpleList', 'simpleList');
+		//模型 - 新增
+		Route::post('create', 'create');
+		//模型 - 更新注解
+		Route::post('updateAnnotation', 'updateAnnotation');
+		//模型 - 删除
+		Route::post('delete', 'delete');
+		//模型 - 详情
+		Route::get('read', 'read');
+		//模型 - 同步属性
+		Route::post('syncProperty', 'syncProperty');
+		//模型 - 字段列表
+		Route::get('getFields', 'getFields');
+	})->prefix('dev.generate.Model/');
+
+	//======================开发辅助 - 逻辑方法======================
+	Route::group('system/actions',function(){
+		//逻辑方法 - 列表
+		Route::get('index', 'index');
+		//逻辑方法 - 新增
+		Route::post('create', 'create');
+		//逻辑方法 - 修改
+		Route::post('edit', 'edit');
+		//逻辑方法 - 删除
+		Route::post('delete', 'delete');
+		//逻辑方法 - 未同步列表
+		Route::get('unSynced', 'unSynced');
+		//逻辑方法 - 同步方法
+		Route::post('sync', 'sync');
+		//逻辑方法 - 一键创建
+		Route::post('speedCreate', 'speedCreate');
+	})->prefix('dev.system.Actions/');
+
+	//======================开发辅助 - 控制器======================
+	Route::group('system/controllers',function(){
+		//控制器 - 列表
+		Route::get('index', 'index');
+		//控制器 - 新增
+		Route::post('create', 'create');
+		//控制器 - 修改
+		Route::post('edit', 'edit');
+		//控制器 - 删除
+		Route::post('delete', 'delete');
+		//控制器 - 未同步列表
+		Route::get('unSynced', 'unSynced');
+		//控制器 - 同步
+		Route::post('sync', 'sync');
+		//控制器 - 查询异常码
+		Route::get('checkException', 'checkException');
+		//控制器 - 简单列表
+		Route::get('simpleList', 'simpleList');
+		//控制器 - 目录列表
+		Route::get('pathList', 'pathList');
+	})->prefix('dev.system.Controllers/');
+
+	//======================开发辅助 - 模块管理======================
+	Route::group('system/modules',function(){
+		//模块管理 - 列表
+		Route::get('index', 'index');
+		//模块管理 - 新增
+		Route::post('create', 'create');
+		//模块管理 - 路由中间件列表
+		Route::get('routeMiddlewares', 'routeMiddlewares');
+		//模块管理 - 简单列表
+		Route::get('simpleList', 'simpleList');
+		//模块管理 - 第三方模块列表
+		Route::get('extendModules', 'extendModules');
+		//模块管理 - 修改模块设置
+		Route::post('edit', 'edit');
+		//模块管理 - 路由生成
+		Route::post('generateRouteRule', 'generateRouteRule');
+	})->prefix('dev.system.Module/');
+
+	//======================开发辅助 - 开发者======================
+	Route::group('developer',function(){
+		//开发者 - 列表
+		Route::get('index', 'index');
+		//开发者 - 修改
+		Route::post('update', 'update');
+		//开发者 - 删除
+		Route::post('delete', 'delete');
+		//开发者 - 岗位列表
+		Route::get('positionList', 'positionList');
+		//开发者 - 新增
+		Route::post('create', 'create');
+	})->prefix('dev.user.Developer/');
+
+	//======================开发辅助 - 控制器目录======================
+	Route::group('system/controller_path',function(){
+		//控制器目录 - 首页
+		Route::get('index', 'index');
+		//控制器目录 - 新增
+		Route::post('create', 'create');
+		//控制器目录 - 修改
+		Route::post('edit', 'edit');
+		//控制器目录 - 删除
+		Route::post('delete', 'delete');
+		//控制器目录 - 简单列表
+		Route::get('simpleList', 'simpleList');
+	})->prefix('dev.system.ControllerPath/');
+})->middleware(['huikedev\dev_admin\common\middlewares\DevRouteMiddleware']);

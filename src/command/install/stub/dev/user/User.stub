@@ -1,0 +1,23 @@
+<?php
+
+
+namespace app\controller\dev\user;
+
+use huikedev\dev_admin\common\DevController;
+/**
+ * Desc
+ * Class User
+ * @package app\controller\dev\user
+ */
+class User extends DevController
+{
+    public function getUserInfo()
+    {
+        return $this->response->render();
+    }
+
+    public function logout()
+    {
+        return $this->response->render();
+    }
+}

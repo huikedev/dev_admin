@@ -1,0 +1,51 @@
+<?php
+
+
+namespace app\controller\dev\generate;
+
+
+use huikedev\dev_admin\common\DevController;
+use huikedev\huike_base\exceptions\response\ResponseException;
+
+class Facade extends DevController
+{
+
+    /*
+     * 门面列表
+     */
+    public function index()
+    {
+        return $this->response->render();
+    }
+
+    /*
+     * 创建门面
+     */
+    public function create()
+    {
+        return $this->response->render();
+    }
+
+
+    public function delete()
+    {
+        return $this->response->render();
+    }
+
+    public function refresh()
+    {
+        return $this->response->render();
+    }
+
+	 /**
+	 * @desc 刷新服务门面
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function updateServiceFacade()
+	{
+		return $this->response->render();
+	}
+
+}

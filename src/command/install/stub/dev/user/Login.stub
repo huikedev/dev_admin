@@ -1,0 +1,24 @@
+<?php
+
+
+namespace app\controller\dev\user;
+
+use huikedev\dev_admin\common\DevController;
+/**
+ * Desc
+ * Class Login
+ * @package app\controller\dev\user
+ */
+class Login extends DevController
+{
+    public function index()
+    {
+        return $this->response->render();
+    }
+
+    public function test()
+    {
+        return $this->response->render();
+    }
+
+}

@@ -1,0 +1,29 @@
+{
+    "name": "huikedev/dev_admin",
+    "description": "dev admin api for huikedev",
+    "type": "think-extend",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "liuqiandev",
+            "email": "310227477@qq.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "huikedev\\dev_admin\\": "src"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {},
+    "extra": {
+        "think":{
+            "services":[
+                "huikedev\\dev_admin\\DevAdminService"
+            ],
+            "config":{
+                "huike_dev_admin": "src/config/huike_dev_admin.php"
+            }
+        }
+    }
+}

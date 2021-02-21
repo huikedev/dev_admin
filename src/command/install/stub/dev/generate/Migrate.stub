@@ -1,0 +1,45 @@
+<?php
+
+
+namespace app\controller\dev\generate;
+
+
+use huikedev\dev_admin\common\DevController;
+use huikedev\huike_base\exceptions\response\ResponseException;
+
+class Migrate extends DevController
+{
+    public function create()
+    {
+        return $this->response->render();
+    }
+
+    public function run()
+    {
+        return $this->response->render();
+    }
+
+	 /**
+	 * @desc 表字段生成迁移文件
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function tableToMigration()
+	{
+		return $this->response->render();
+	}
+
+
+	 /**
+	 * @desc 表数据生成种子文件
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function tableToSeeds()
+	{
+		return $this->response->render();
+	}
+
+}

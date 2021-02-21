@@ -1,0 +1,97 @@
+<?php
+
+namespace app\controller\dev\system;
+
+use huikedev\dev_admin\common\DevController;
+use huikedev\huike_base\exceptions\response\ResponseException;
+
+
+class Module extends DevController
+{
+
+
+	 /**
+	 * @desc 列表
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function index()
+	{
+		return $this->response->render();
+	}
+
+
+	 /**
+	 * @desc 新增
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function create()
+	{
+		return $this->response->render();
+	}
+
+
+	 /**
+	 * @desc 路由中间件列表
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function routeMiddlewares()
+	{
+		return $this->response->render();
+	}
+
+
+	 /**
+	 * @desc 简单列表
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function simpleList()
+	{
+		return $this->response->render();
+	}
+
+
+	 /**
+	 * @desc 第三方模块列表
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function extendModules()
+	{
+		return $this->response->render();
+	}
+
+
+
+	 /**
+	 * @desc 修改 修改模块设置
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function edit()
+	{
+		return $this->response->render();
+	}
+
+
+    /**
+     * @desc 生成路由
+     * @huike controller
+     * @return mixed
+     * @throws ResponseException
+     */
+    public function generateRouteRule()
+    {
+        return $this->response->render();
+    }
+
+}

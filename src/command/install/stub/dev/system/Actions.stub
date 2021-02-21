@@ -1,0 +1,54 @@
+<?php
+
+
+namespace app\controller\dev\system;
+
+
+use huikedev\dev_admin\common\DevController;
+use huikedev\huike_base\exceptions\response\ResponseException;
+
+class Actions extends DevController
+{
+    public function index()
+    {
+        return $this->response->render();
+    }
+
+    public function create()
+    {
+        return $this->response->render();
+    }
+
+    public function edit()
+    {
+        return $this->response->render();
+    }
+
+    public function delete()
+    {
+        return $this->response->render();
+    }
+
+    public function unSynced()
+    {
+        return $this->response->render();
+    }
+
+    public function sync()
+    {
+        return $this->response->render();
+    }
+
+
+	 /**
+	 * @desc 一键创建方法 一键生成CURD
+	 * @huike controller
+	 * @return mixed
+	 * @throws ResponseException
+	 */
+	public function speedCreate()
+	{
+		return $this->response->render();
+	}
+
+}
