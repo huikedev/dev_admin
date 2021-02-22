@@ -17,10 +17,9 @@
     "minimum-stability": "dev",
     "require": {
         "huikedev/huike_generator": "^0.0",
-        "huikedev/huike_base": "^0.0",
-        "yunwuxin/think-model-helper": "^3.0",
-        "firebase/php-jwt": "^5.2"
+        "huikedev/huike_base": "^0.0"
     },
+
     "extra": {
         "think":{
             "services":[
