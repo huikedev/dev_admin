@@ -16,9 +16,12 @@ class Delete
         if($model->isEmpty()){
             return true;
         }
-        $isDeleteService = AppRequest::safeBoolean('delete_service');
-        if($isDeleteService){
-            $reflectClass = new \ReflectionClass($model->action_serice_class);
+
+        if(AppRequest::safeBoolean('delete_service')){
+            $reflectClass = new \ReflectionClass($model->service_handler);
+            if(file_exists($reflectClass->getFileName())){
+                unlink($reflectClass->getFileName());
+            }
         }
         $model->delete();
         return true;

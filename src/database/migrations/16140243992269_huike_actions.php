@@ -29,7 +29,7 @@ class HuikeActions extends Migrator
     public function change()
     {
 
-    	//原始表创建于：2021-02-22 01:56:49,数据库迁移文件生成于：2021-02-22 02:05:10
+	//原始表创建于：2021-02-22 23:24:57,数据库迁移文件生成于：2021-02-23 04:06:39
 		$table = $this->table('huike_actions')->setCollation('utf8mb4_general_ci')->setEngine('InnoDB')->setComment('控制器方法');
 		$table->setId('id')
 			->addColumn(Column::string('action_name',255)->setComment('方法名'))
@@ -41,9 +41,9 @@ class HuikeActions extends Migrator
 			->addColumn(Column::tinyInteger('is_need_permission')->setDefault(1)->setComment('是否需要权限'))
 			->addColumn(Column::tinyInteger('notice_type')->setDefault(0)->setComment('前端操作反馈'))
 			->addColumn(Column::tinyInteger('response_type')->setDefault(1)->setComment('响应类型'))
-			->addColumn(Column::string('remind_msg',255)->setComment('提示消息')->setNullable())
+			->addColumn(Column::string('remind_msg',255)->setDefault('')->setComment('提示消息'))
 			->addColumn(Column::tinyInteger('is_private')->setDefault(1)->setComment('是否公开访问'))
-			->addColumn(Column::string('remark',255)->setComment('备注')->setNullable())
+			->addColumn(Column::string('remark',255)->setDefault('')->setComment('备注'))
 			->addColumn(Column::integer('creator_id')->setDefault(0)->setComment('创建人ID'))
 			->addColumn(Column::integer('create_time')->setDefault(0)->setComment('创建时间')->setUnsigned())
 			->addColumn(Column::integer('update_time')->setDefault(0)->setComment('最后更新时间')->setUnsigned())

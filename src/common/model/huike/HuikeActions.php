@@ -4,6 +4,7 @@ namespace huikedev\dev_admin\common\model\huike;
 
 use huikedev\dev_admin\common\caching\facade\DevActionsCache;
 use huikedev\dev_admin\common\model_trait\CreatorTrait;
+use huikedev\dev_admin\service\system\support\routes\RebuildRoutes;
 use huikedev\huike_base\app_const\HuikeConfig;
 use huikedev\huike_base\app_const\NoticeType;
 use huikedev\huike_base\app_const\RequestMethods;
@@ -11,6 +12,7 @@ use huikedev\huike_base\app_const\response\AppResponseType;
 use huikedev\huike_base\app_const\ServiceReturnType;
 use huikedev\huike_base\base\BaseModel;
 use huikedev\huike_base\log\HuikeLog;
+use think\helper\Str;
 use think\Model;
 use think\model\concern\SoftDelete;
 
@@ -53,11 +55,6 @@ class HuikeActions extends BaseModel
 	protected $jsonAssoc=true;
 	// HuikeModelPropertyEnd
 
-    protected $appendScene = [
-        'default'=>[
-            'request_method_text','notice_type_text','response_type_text','service_return_type_text'
-        ]
-    ];
 
     public static $commonAppends = [
         'request_method_text','notice_type_text','response_type_text','service_return_type_text','creator'
@@ -79,7 +76,7 @@ class HuikeActions extends BaseModel
      * @param $data
      * @return string
      */
-    public function getRequestMethodTextAttr($value,$data)
+    public function getRequestMethodTextAttr($value,$data): string
     {
         return RequestMethods::METHODS[$data['request_method']] ?? '未知';
     }
@@ -90,7 +87,7 @@ class HuikeActions extends BaseModel
      * @param $data
      * @return string
      */
-    public function getNoticeTypeTextAttr($value,$data)
+    public function getNoticeTypeTextAttr($value,$data): string
     {
         return NoticeType::ALL_TEXT[$data['notice_type']] ?? '未知';
     }
@@ -101,7 +98,7 @@ class HuikeActions extends BaseModel
      * @param $data
      * @return string
      */
-    public function getResponseTypeTextAttr($value,$data)
+    public function getResponseTypeTextAttr($value,$data): string
     {
         return AppResponseType::ALL_TEXT[$data['response_type']] ?? '未知';
     }
@@ -112,7 +109,7 @@ class HuikeActions extends BaseModel
      * @param $data
      * @return string
      */
-    public function getServiceReturnTypeTextAttr($value,$data)
+    public function getServiceReturnTypeTextAttr($value,$data): string
     {
         return ServiceReturnType::ALL_TEXT[$data['service_return_type']] ?? '自定义（object）';
     }
@@ -125,10 +122,19 @@ class HuikeActions extends BaseModel
         return $this->controller->service_class;
     }
 
+    public function getServiceHandlerAttr($value,$data): string
+    {
+        if(isset($this->controller)===false){
+            $this->controller();
+        }
+        return $this->controller->provider_namespace.'\\'.Str::studly($data['action_name']);
+    }
+
     public static function onAfterWrite(Model $model): void
     {
         try {
             DevActionsCache::deleteCache();
+            (new RebuildRoutes())->setControllerId($model->controller_id)->handle();
         }catch (\Throwable $e){
             HuikeLog::error($e);
         }
@@ -138,6 +144,7 @@ class HuikeActions extends BaseModel
     {
         try {
             DevActionsCache::deleteCache();
+            (new RebuildRoutes())->setControllerId($model->controller_id)->handle();
         }catch (\Throwable $e){
             HuikeLog::error($e);
         }

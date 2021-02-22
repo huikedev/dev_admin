@@ -2,7 +2,7 @@
 
 use think\migration\Seeder;
 
-class HuikeControllersKheain extends Seeder
+class HuikeControllersCmbxfp extends Seeder
 {
     /**
      * Run Method.
@@ -15,7 +15,7 @@ class HuikeControllersKheain extends Seeder
     public function run()
     {
 
-    
+
 		// id = 1
 		think\facade\Db::table('huike_controllers')->insert(['id' => 1,'controller_name' => '/','controller_title' => '模块根目录','module_id' => 1,'created_by_huike' => 1,'creator_id' => 1,'update_time' => 1612095224,'create_time' => 1612095224]);
 		// id = 2
@@ -43,6 +43,6 @@ class HuikeControllersKheain extends Seeder
 		// id = 17
 		think\facade\Db::table('huike_controllers')->insert(['id' => 17,'controller_name' => 'Developer','controller_title' => '开发者','path_id' => 4,'module_id' => 1,'route_name' => 'developer','is_static_service' => 1,'created_by_huike' => 1,'exception_key' => 'dev developer exception','exception_code' => -2300,'exception_msg' => '系统错误，请稍候再试','creator_id' => 1,'update_time' => 1613535981,'create_time' => 1613535981]);
 		// id = 21
-		think\facade\Db::table('huike_controllers')->insert(['id' => 21,'controller_name' => 'ControllerPath','controller_title' => '控制器目录','path_id' => 3,'module_id' => 1,'route_name' => 'controller_path','is_static_service' => 1,'created_by_huike' => 1,'exception_key' => 'dev controller path exception','exception_code' => -2400,'exception_msg' => '系统错误，请稍候再试','creator_id' => 1,'update_time' => 1613797119,'create_time' => 1613797119]);
+		think\facade\Db::table('huike_controllers')->insert(['id' => 21,'controller_name' => 'ControllerPath','controller_title' => '控制器目录','path_id' => 3,'module_id' => 1,'route_name' => 'controller_path','is_static_service' => 1,'created_by_huike' => 1,'exception_key' => 'dev controller path exception','exception_code' => -2400,'exception_msg' => '系统错误，请稍候再试','creator_id' => 1,'update_time' => 1614000779,'create_time' => 1613797119]);
 }
 }

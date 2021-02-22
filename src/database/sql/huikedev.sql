@@ -11,7 +11,7 @@
  Target Server Version : 50730
  File Encoding         : 65001
 
- Date: 22/02/2021 01:32:23
+ Date: 23/02/2021 04:09:32
 */
 
 SET NAMES utf8mb4;
@@ -32,73 +32,73 @@ CREATE TABLE `huike_actions`  (
   `is_need_permission` tinyint(4) NOT NULL DEFAULT 1 COMMENT '是否需要权限',
   `notice_type` tinyint(4) NOT NULL DEFAULT 0 COMMENT '前端操作反馈',
   `response_type` tinyint(4) NOT NULL DEFAULT 1 COMMENT '响应类型',
-  `remind_msg` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '提示消息',
+  `remind_msg` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '提示消息',
   `is_private` tinyint(4) NOT NULL DEFAULT 1 COMMENT '是否公开访问',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-  `creator_id` int(11) NOT NULL COMMENT '创建人ID',
+  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '备注',
+  `creator_id` int(11) NOT NULL DEFAULT 0 COMMENT '创建人ID',
   `create_time` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '创建时间',
   `update_time` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '最后更新时间',
   `delete_time` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '软删除时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `controller_id`(`controller_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 56 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '控制器方法' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 57 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '控制器方法' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of huike_actions
 -- ----------------------------
-INSERT INTO `huike_actions` VALUES (1, 'index', '登录', 5, 'index', 1, 'array_object', 0, 3, 1, '登录成功，请稍后', 0, NULL, 0, 1612119224, 1612119224, 0);
-INSERT INTO `huike_actions` VALUES (2, 'getUserInfo', '用户详情', 6, 'getUserInfo', 0, 'array_object', 1, 0, 1, NULL, 1, NULL, 0, 1612119395, 1612119395, 0);
-INSERT INTO `huike_actions` VALUES (3, 'Test', '测试', 5, 'test', 0, 'mixed', 1, 0, 1, NULL, 1, NULL, 0, 1612119546, 1612155488, 1612155488);
-INSERT INTO `huike_actions` VALUES (4, 'index', '列表', 7, 'index', 0, 'paginator', 1, 0, 1, NULL, 1, NULL, 0, 1612179281, 1612179281, 0);
-INSERT INTO `huike_actions` VALUES (5, 'create', '新增', 7, 'create', 1, 'bool', 1, 9, 1, '门面创建成功', 1, NULL, 0, 1612179338, 1612179338, 0);
-INSERT INTO `huike_actions` VALUES (6, 'delete', '删除', 7, 'delete', 1, 'bool', 1, 9, 1, '门面删除成功', 1, NULL, 0, 1612179383, 1612179383, 0);
-INSERT INTO `huike_actions` VALUES (7, 'refresh', '刷新', 7, 'refresh', 1, 'bool', 1, 9, 1, '门面刷新成功', 1, NULL, 0, 1612179418, 1612179418, 0);
-INSERT INTO `huike_actions` VALUES (8, 'create', '新增', 8, 'create', 1, 'bool', 1, 9, 1, '数据库迁移文件创建成功', 1, NULL, 0, 1612179446, 1612179446, 0);
-INSERT INTO `huike_actions` VALUES (9, 'run', '执行', 8, 'run', 1, 'bool', 1, 9, 1, '数据库迁移执行成功', 1, NULL, 0, 1612179476, 1612179476, 0);
-INSERT INTO `huike_actions` VALUES (10, 'index', '列表', 9, 'index', 0, 'paginator', 1, 0, 1, NULL, 1, NULL, 0, 1612179492, 1612179492, 0);
-INSERT INTO `huike_actions` VALUES (11, 'simpleList', '简单列表', 9, 'simpleList', 0, 'array', 1, 0, 1, NULL, 1, NULL, 0, 1612179512, 1612179512, 0);
-INSERT INTO `huike_actions` VALUES (12, 'create', '新增', 9, 'create', 1, 'bool', 1, 9, 1, '模型创建成功', 1, NULL, 0, 1612179533, 1612179533, 0);
-INSERT INTO `huike_actions` VALUES (13, 'updateAnnotation', '更新注解', 9, 'updateAnnotation', 1, 'bool', 1, 6, 1, '模型注解更新成功', 1, NULL, 0, 1612179557, 1612179557, 0);
-INSERT INTO `huike_actions` VALUES (14, 'delete', '删除', 9, 'delete', 1, 'bool', 1, 9, 1, '模型删除成功', 1, NULL, 0, 1612179574, 1612179574, 0);
-INSERT INTO `huike_actions` VALUES (15, 'read', '详情', 9, 'read', 0, 'model', 1, 0, 1, NULL, 1, NULL, 0, 1612179592, 1612179592, 0);
-INSERT INTO `huike_actions` VALUES (16, 'syncProperty', '同步属性', 9, 'syncProperty', 1, 'bool', 1, 6, 1, '模型属性同步成功', 1, NULL, 0, 1612179613, 1612179613, 0);
-INSERT INTO `huike_actions` VALUES (17, 'getFields', '字段列表', 9, 'getFields', 0, 'array', 1, 0, 1, NULL, 1, NULL, 0, 1612179631, 1612179631, 0);
-INSERT INTO `huike_actions` VALUES (18, 'index', '列表', 10, 'index', 0, 'paginator', 1, 0, 1, NULL, 1, NULL, 0, 1612179644, 1612179644, 0);
-INSERT INTO `huike_actions` VALUES (19, 'create', '新增', 10, 'create', 1, 'array_object', 1, 0, 1, NULL, 1, NULL, 0, 1612179675, 1612179675, 0);
-INSERT INTO `huike_actions` VALUES (20, 'edit', '修改', 10, 'edit', 1, 'bool', 1, 9, 1, '修改逻辑方法成功', 1, NULL, 0, 1612179706, 1612179706, 0);
-INSERT INTO `huike_actions` VALUES (21, 'delete', '删除', 10, 'delete', 1, 'bool', 1, 9, 1, '删除逻辑方法成功', 1, NULL, 0, 1612179724, 1612179724, 0);
-INSERT INTO `huike_actions` VALUES (22, 'unSynced', '未同步列表', 10, 'unSynced', 0, 'paginator', 1, 0, 1, NULL, 1, NULL, 0, 1612179743, 1612179743, 0);
-INSERT INTO `huike_actions` VALUES (23, 'sync', '同步方法', 10, 'sync', 1, 'bool', 1, 6, 1, '同步逻辑方法成功', 1, NULL, 0, 1612179770, 1612179770, 0);
-INSERT INTO `huike_actions` VALUES (24, 'speedCreate', '一键创建', 10, 'speedCreate', 1, 'array_object', 1, 0, 1, NULL, 1, NULL, 0, 1612179807, 1612179807, 0);
-INSERT INTO `huike_actions` VALUES (25, 'index', '列表', 11, 'index', 0, 'paginator', 1, 0, 1, NULL, 1, NULL, 0, 1612179819, 1612179819, 0);
-INSERT INTO `huike_actions` VALUES (26, 'create', '新增', 11, 'create', 1, 'bool', 1, 9, 1, '控制器创建成功', 1, NULL, 0, 1612179840, 1612179840, 0);
-INSERT INTO `huike_actions` VALUES (27, 'edit', '修改', 11, 'edit', 1, 'bool', 1, 9, 1, '控制器修改成功', 1, NULL, 0, 1612179860, 1612179860, 0);
-INSERT INTO `huike_actions` VALUES (28, 'delete', '删除', 11, 'delete', 1, 'bool', 1, 9, 1, '控制器删除成功', 1, NULL, 0, 1612179877, 1612179877, 0);
-INSERT INTO `huike_actions` VALUES (29, 'unSynced', '未同步列表', 11, 'unSynced', 0, 'array', 1, 0, 1, NULL, 1, NULL, 0, 1612179894, 1612179894, 0);
-INSERT INTO `huike_actions` VALUES (30, 'sync', '同步', 11, 'sync', 1, 'bool', 1, 6, 1, '控制器同步成功', 1, NULL, 0, 1612179914, 1612179914, 0);
-INSERT INTO `huike_actions` VALUES (31, 'checkException', '查询异常码', 11, 'checkException', 0, 'array_object', 1, 0, 1, NULL, 1, NULL, 0, 1612179937, 1612179937, 0);
-INSERT INTO `huike_actions` VALUES (32, 'simpleList', '简单列表', 11, 'simpleList', 0, 'array', 1, 0, 1, NULL, 1, NULL, 0, 1612179955, 1612179955, 0);
-INSERT INTO `huike_actions` VALUES (33, 'pathList', '目录列表', 11, 'pathList', 0, 'array', 1, 0, 1, NULL, 1, NULL, 0, 1612179980, 1612179980, 0);
-INSERT INTO `huike_actions` VALUES (34, 'index', '列表', 12, 'index', 0, 'paginator', 1, 0, 1, NULL, 1, NULL, 0, 1612179992, 1612179992, 0);
-INSERT INTO `huike_actions` VALUES (35, 'create', '新增', 12, 'create', 1, 'bool', 1, 9, 1, '模块创建成功', 1, NULL, 0, 1612180010, 1612180010, 0);
-INSERT INTO `huike_actions` VALUES (36, 'routeMiddlewares', '路由中间件列表', 12, 'routeMiddlewares', 0, 'array', 1, 0, 1, NULL, 1, NULL, 0, 1612180029, 1612180029, 0);
-INSERT INTO `huike_actions` VALUES (37, 'simpleList', '简单列表', 12, 'simpleList', 0, 'array', 1, 0, 1, NULL, 1, NULL, 0, 1612180052, 1612180052, 0);
-INSERT INTO `huike_actions` VALUES (38, 'updateServiceFacade', '刷新服务门面', 7, 'updateServiceFacade', 1, 'bool', 1, 6, 1, '刷新服务门面成功', 1, NULL, 0, 1612357988, 1612357988, 0);
-INSERT INTO `huike_actions` VALUES (40, 'extendModules', '第三方模块列表', 12, 'extendModules', 0, 'array', 1, 0, 1, NULL, 1, NULL, 1, 1612795237, 1612795237, 0);
+INSERT INTO `huike_actions` VALUES (1, 'index', '登录', 5, 'index', 1, 'array_object', 0, 3, 1, '登录成功，请稍后', 0, '', 1, 1612119224, 1612119224, 0);
+INSERT INTO `huike_actions` VALUES (2, 'getUserInfo', '用户详情', 6, 'getUserInfo', 0, 'array_object', 1, 0, 1, '', 1, '', 1, 1612119395, 1612119395, 0);
+INSERT INTO `huike_actions` VALUES (3, 'Test', '测试', 5, 'test', 0, 'mixed', 1, 0, 1, '', 1, '', 1, 1612119546, 1612155488, 1612155488);
+INSERT INTO `huike_actions` VALUES (4, 'index', '列表', 7, 'index', 0, 'paginator', 1, 0, 1, '', 1, '', 1, 1612179281, 1612179281, 0);
+INSERT INTO `huike_actions` VALUES (5, 'create', '新增', 7, 'create', 1, 'bool', 1, 9, 1, '门面创建成功', 1, '', 1, 1612179338, 1612179338, 0);
+INSERT INTO `huike_actions` VALUES (6, 'delete', '删除', 7, 'delete', 1, 'bool', 1, 9, 1, '门面删除成功', 1, '', 1, 1612179383, 1612179383, 0);
+INSERT INTO `huike_actions` VALUES (7, 'refresh', '刷新', 7, 'refresh', 1, 'bool', 1, 9, 1, '门面刷新成功', 1, '', 1, 1612179418, 1612179418, 0);
+INSERT INTO `huike_actions` VALUES (8, 'create', '新增', 8, 'create', 1, 'bool', 1, 9, 1, '数据库迁移文件创建成功', 1, '', 1, 1612179446, 1612179446, 0);
+INSERT INTO `huike_actions` VALUES (9, 'run', '执行', 8, 'run', 1, 'bool', 1, 9, 1, '数据库迁移执行成功', 1, '', 1, 1612179476, 1612179476, 0);
+INSERT INTO `huike_actions` VALUES (10, 'index', '列表', 9, 'index', 0, 'paginator', 1, 0, 1, '', 1, '', 1, 1612179492, 1612179492, 0);
+INSERT INTO `huike_actions` VALUES (11, 'simpleList', '简单列表', 9, 'simpleList', 0, 'array', 1, 0, 1, '', 1, '', 1, 1612179512, 1612179512, 0);
+INSERT INTO `huike_actions` VALUES (12, 'create', '新增', 9, 'create', 1, 'bool', 1, 9, 1, '模型创建成功', 1, '', 1, 1612179533, 1612179533, 0);
+INSERT INTO `huike_actions` VALUES (13, 'updateAnnotation', '更新注解', 9, 'updateAnnotation', 1, 'bool', 1, 6, 1, '模型注解更新成功', 1, '', 1, 1612179557, 1612179557, 0);
+INSERT INTO `huike_actions` VALUES (14, 'delete', '删除', 9, 'delete', 1, 'bool', 1, 9, 1, '模型删除成功', 1, '', 1, 1612179574, 1612179574, 0);
+INSERT INTO `huike_actions` VALUES (15, 'read', '详情', 9, 'read', 0, 'model', 1, 0, 1, '', 1, '', 1, 1612179592, 1612179592, 0);
+INSERT INTO `huike_actions` VALUES (16, 'syncProperty', '同步属性', 9, 'syncProperty', 1, 'bool', 1, 6, 1, '模型属性同步成功', 1, '', 1, 1612179613, 1612179613, 0);
+INSERT INTO `huike_actions` VALUES (17, 'getFields', '字段列表', 9, 'getFields', 0, 'array', 1, 0, 1, '', 1, '', 1, 1612179631, 1612179631, 0);
+INSERT INTO `huike_actions` VALUES (18, 'index', '列表', 10, 'index', 0, 'paginator', 1, 0, 1, '', 1, '', 1, 1612179644, 1612179644, 0);
+INSERT INTO `huike_actions` VALUES (19, 'create', '新增', 10, 'create', 1, 'array_object', 1, 0, 1, '', 1, '', 1, 1612179675, 1612179675, 0);
+INSERT INTO `huike_actions` VALUES (20, 'edit', '修改', 10, 'edit', 1, 'bool', 1, 9, 1, '修改逻辑方法成功', 1, '', 1, 1612179706, 1612179706, 0);
+INSERT INTO `huike_actions` VALUES (21, 'delete', '删除', 10, 'delete', 1, 'bool', 1, 9, 1, '删除逻辑方法成功', 1, '', 1, 1612179724, 1612179724, 0);
+INSERT INTO `huike_actions` VALUES (22, 'unSynced', '未同步列表', 10, 'unSynced', 0, 'paginator', 1, 0, 1, '', 1, '', 1, 1612179743, 1612179743, 0);
+INSERT INTO `huike_actions` VALUES (23, 'sync', '同步方法', 10, 'sync', 1, 'bool', 1, 6, 1, '同步逻辑方法成功', 1, '', 1, 1612179770, 1612179770, 0);
+INSERT INTO `huike_actions` VALUES (24, 'speedCreate', '一键创建', 10, 'speedCreate', 1, 'array_object', 1, 0, 1, '', 1, '', 1, 1612179807, 1612179807, 0);
+INSERT INTO `huike_actions` VALUES (25, 'index', '列表', 11, 'index', 0, 'paginator', 1, 0, 1, '', 1, '', 1, 1612179819, 1612179819, 0);
+INSERT INTO `huike_actions` VALUES (26, 'create', '新增', 11, 'create', 1, 'bool', 1, 9, 1, '控制器创建成功', 1, '', 1, 1612179840, 1612179840, 0);
+INSERT INTO `huike_actions` VALUES (27, 'edit', '修改', 11, 'edit', 1, 'bool', 1, 9, 1, '控制器修改成功', 1, '', 1, 1612179860, 1612179860, 0);
+INSERT INTO `huike_actions` VALUES (28, 'delete', '删除', 11, 'delete', 1, 'bool', 1, 9, 1, '控制器删除成功', 1, '', 1, 1612179877, 1612179877, 0);
+INSERT INTO `huike_actions` VALUES (29, 'unSynced', '未同步列表', 11, 'unSynced', 0, 'array', 1, 0, 1, '', 1, '', 1, 1612179894, 1612179894, 0);
+INSERT INTO `huike_actions` VALUES (30, 'sync', '同步', 11, 'sync', 1, 'bool', 1, 6, 1, '控制器同步成功', 1, '', 1, 1612179914, 1612179914, 0);
+INSERT INTO `huike_actions` VALUES (31, 'checkException', '查询异常码', 11, 'checkException', 0, 'array_object', 1, 0, 1, '', 1, '', 1, 1612179937, 1612179937, 0);
+INSERT INTO `huike_actions` VALUES (32, 'simpleList', '简单列表', 11, 'simpleList', 0, 'array', 1, 0, 1, '', 1, '', 1, 1612179955, 1612179955, 0);
+INSERT INTO `huike_actions` VALUES (33, 'pathList', '目录列表', 11, 'pathList', 0, 'array', 1, 0, 1, '', 1, '', 1, 1612179980, 1612179980, 0);
+INSERT INTO `huike_actions` VALUES (34, 'index', '列表', 12, 'index', 0, 'paginator', 1, 0, 1, '', 1, '', 1, 1612179992, 1612179992, 0);
+INSERT INTO `huike_actions` VALUES (35, 'create', '新增', 12, 'create', 1, 'bool', 1, 9, 1, '模块创建成功', 1, '', 1, 1612180010, 1612180010, 0);
+INSERT INTO `huike_actions` VALUES (37, 'simpleList', '简单列表', 12, 'simpleList', 0, 'array', 1, 0, 1, '', 1, '', 1, 1612180052, 1612180052, 0);
+INSERT INTO `huike_actions` VALUES (38, 'updateServiceFacade', '刷新服务门面', 7, 'updateServiceFacade', 1, 'bool', 1, 6, 1, '刷新服务门面成功', 1, '', 1, 1612357988, 1612357988, 0);
+INSERT INTO `huike_actions` VALUES (40, 'extendModules', '第三方模块列表', 12, 'extendModules', 0, 'array', 1, 0, 1, '', 1, '', 1, 1612795237, 1612795237, 0);
 INSERT INTO `huike_actions` VALUES (42, 'edit', '修改', 12, 'edit', 1, 'bool', 1, 9, 1, '修改模块设置成功', 1, '修改模块设置', 1, 1612873972, 1612873972, 0);
-INSERT INTO `huike_actions` VALUES (43, 'generateRouteRule', '生成路由', 12, 'generateRouteRule', 1, 'bool', 1, 9, 1, '路由生成成功，请前往对应的模块目录查看', 1, '路由生成', 1, 1612875222, 1612875222, 0);
-INSERT INTO `huike_actions` VALUES (44, 'index', '列表', 17, 'index', 0, 'paginator', 1, 0, 1, NULL, 1, NULL, 1, 1613536801, 1613536801, 0);
-INSERT INTO `huike_actions` VALUES (45, 'update', '修改', 17, 'update', 1, 'bool', 1, 9, 1, '开发者信息修改成功', 1, NULL, 1, 1613562995, 1613562995, 0);
-INSERT INTO `huike_actions` VALUES (46, 'delete', '删除', 17, 'delete', 1, 'bool', 1, 9, 1, '开发者删除成功', 1, NULL, 1, 1613563038, 1613563038, 0);
-INSERT INTO `huike_actions` VALUES (47, 'positionList', '岗位列表', 17, 'positionList', 0, 'array', 1, 0, 1, NULL, 1, NULL, 1, 1613623640, 1613623640, 0);
-INSERT INTO `huike_actions` VALUES (48, 'create', '新增', 17, 'create', 1, 'bool', 1, 9, 1, '开发者添加成功', 1, NULL, 1, 1613631699, 1613631699, 0);
-INSERT INTO `huike_actions` VALUES (49, 'tableToMigration', '表字段生成迁移文件', 8, 'tableToMigration', 1, 'bool', 1, 9, 1, '从表字段生成迁移文件成功', 1, NULL, 1, 1613748224, 1613748224, 0);
-INSERT INTO `huike_actions` VALUES (50, 'tableToSeeds', '表数据生成种子文件', 8, 'tableToSeeds', 1, 'bool', 1, 9, 1, '表数据生成种子文件成功！', 1, NULL, 1, 1613751850, 1613751850, 0);
-INSERT INTO `huike_actions` VALUES (51, 'index', '首页', 21, 'index', 0, 'paginator', 1, 0, 1, NULL, 1, '首页', 1, 1613797768, 1613797768, 0);
+INSERT INTO `huike_actions` VALUES (43, 'refreshRoutes', '刷新路由配置', 12, 'refreshRoutes', 1, 'bool', 1, 9, 1, '路由生成成功，请前往对应的模块目录查看', 1, '路由生成', 1, 1612875222, 1612875222, 0);
+INSERT INTO `huike_actions` VALUES (44, 'index', '列表', 17, 'index', 0, 'paginator', 1, 0, 1, '', 1, '', 1, 1613536801, 1613536801, 0);
+INSERT INTO `huike_actions` VALUES (45, 'update', '修改', 17, 'update', 1, 'bool', 1, 9, 1, '开发者信息修改成功', 1, '', 1, 1613562995, 1613562995, 0);
+INSERT INTO `huike_actions` VALUES (46, 'delete', '删除', 17, 'delete', 1, 'bool', 1, 9, 1, '开发者删除成功', 1, '', 1, 1613563038, 1613563038, 0);
+INSERT INTO `huike_actions` VALUES (47, 'positionList', '岗位列表', 17, 'positionList', 0, 'array', 1, 0, 1, '', 1, '', 1, 1613623640, 1613623640, 0);
+INSERT INTO `huike_actions` VALUES (48, 'create', '新增', 17, 'create', 1, 'bool', 1, 9, 1, '开发者添加成功', 1, '', 1, 1613631699, 1613631699, 0);
+INSERT INTO `huike_actions` VALUES (49, 'tableToMigration', '表字段生成迁移文件', 8, 'tableToMigration', 1, 'bool', 1, 6, 1, '从表字段生成迁移文件成功', 1, '', 1, 1613748224, 1613748224, 0);
+INSERT INTO `huike_actions` VALUES (50, 'tableToSeeds', '表数据生成种子文件', 8, 'tableToSeeds', 1, 'bool', 1, 6, 1, '表数据生成种子文件成功！', 1, '', 1, 1613751850, 1613751850, 0);
+INSERT INTO `huike_actions` VALUES (51, 'index', '首页', 21, 'index', 0, 'paginator', 1, 0, 1, '', 1, '首页', 1, 1613797768, 1613797768, 0);
 INSERT INTO `huike_actions` VALUES (52, 'create', '新增', 21, 'create', 1, 'bool', 1, 6, 1, '控制器目录创建成功！', 1, '新增', 1, 1613797768, 1613797768, 0);
 INSERT INTO `huike_actions` VALUES (53, 'edit', '修改', 21, 'edit', 1, 'bool', 1, 6, 1, '控制器目录修改成功！', 1, '修改', 1, 1613797768, 1613797768, 0);
 INSERT INTO `huike_actions` VALUES (54, 'delete', '删除', 21, 'delete', 1, 'bool', 1, 9, 1, '控制器目录删除成功！', 1, '删除', 1, 1613797768, 1613797768, 0);
-INSERT INTO `huike_actions` VALUES (55, 'simpleList', '简单列表', 21, 'simpleList', 0, 'array', 1, 0, 1, NULL, 1, NULL, 1, 1613804705, 1613804705, 0);
+INSERT INTO `huike_actions` VALUES (55, 'simpleList', '简单列表', 21, 'simpleList', 0, 'array', 1, 0, 1, '', 1, '', 1, 1613804705, 1614015881, 0);
+INSERT INTO `huike_actions` VALUES (56, 'refreshException', '刷新异常配置', 12, 'refreshException', 1, 'bool', 1, 6, 1, '刷新异常配置文件成功', 1, '', 1, 1614006250, 1614006250, 0);
 
 -- ----------------------------
 -- Table structure for huike_controllers
@@ -116,33 +116,33 @@ CREATE TABLE `huike_controllers`  (
   `exception_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '异常key',
   `exception_code` int(11) NULL DEFAULT NULL COMMENT '异常code',
   `exception_msg` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '异常message',
-  `creator_id` int(11) NOT NULL COMMENT '创建人ID',
+  `creator_id` int(11) NOT NULL DEFAULT 0 COMMENT '创建人ID',
   `delete_time` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '软删除时间',
   `update_time` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '最后更新时间',
   `create_time` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `exception_code`(`exception_code`) USING BTREE,
   UNIQUE INDEX `exception_key`(`exception_key`) USING BTREE,
+  UNIQUE INDEX `exception_code`(`exception_code`) USING BTREE,
   INDEX `module_id`(`module_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '后端控制器节点' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '后端控制器节点' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of huike_controllers
 -- ----------------------------
-INSERT INTO `huike_controllers` VALUES (1, '/', '模块根目录', 0, 1, '', 0, 1, NULL, NULL, '', 0, 0, 1612095224, 1612095224);
-INSERT INTO `huike_controllers` VALUES (2, 'generate', '代码生成', 0, 1, 'generate', 0, 1, NULL, NULL, '', 0, 0, 1613885227, 1612102562);
-INSERT INTO `huike_controllers` VALUES (3, 'system', '系统设置', 0, 1, 'system', 0, 1, NULL, NULL, '', 0, 0, 1612102659, 1612102659);
-INSERT INTO `huike_controllers` VALUES (4, 'user', '管理用户', 0, 1, '', 0, 1, NULL, NULL, '', 0, 0, 1612102673, 1612102673);
-INSERT INTO `huike_controllers` VALUES (5, 'Login', '登录', 4, 1, 'login', 0, 1, 'dev login exception', -1000, '系统错误，请稍候再试', 0, 0, 1612102944, 1612102944);
-INSERT INTO `huike_controllers` VALUES (6, 'User', '用户', 4, 1, 'user', 0, 1, 'dev user exception', -1100, '系统错误，请稍候再试', 0, 0, 1612875654, 1612103316);
-INSERT INTO `huike_controllers` VALUES (7, 'Facade', '门面', 2, 1, 'facade', 0, 1, 'dev facade exception', -1200, '系统错误，请稍候再试', 0, 0, 1612103372, 1612103372);
-INSERT INTO `huike_controllers` VALUES (8, 'Migrate', '数据库迁移', 2, 1, 'migrate', 0, 1, 'dev migrate exception', -1500, '系统错误，请稍候再试', 0, 0, 1612103423, 1612103423);
-INSERT INTO `huike_controllers` VALUES (9, 'Model', '模型', 2, 1, 'model', 0, 1, 'dev model exception', -1300, '系统错误，请稍候再试', 0, 0, 1612103468, 1612103468);
-INSERT INTO `huike_controllers` VALUES (10, 'Actions', '逻辑方法', 3, 1, 'actions', 0, 1, 'dev actions exception', -1800, '系统错误，请稍候再试', 0, 0, 1612103800, 1612103800);
-INSERT INTO `huike_controllers` VALUES (11, 'Controllers', '控制器', 3, 1, 'controllers', 0, 1, 'dev controllers exception', -1700, '系统错误，请稍候再试', 0, 0, 1612103955, 1612103955);
-INSERT INTO `huike_controllers` VALUES (12, 'Module', '模块管理', 3, 1, 'modules', 0, 1, 'dev module exception', -1600, '系统错误，请稍候再试', 0, 0, 1612875494, 1612103994);
+INSERT INTO `huike_controllers` VALUES (1, '/', '模块根目录', 0, 1, '', 0, 1, NULL, NULL, '', 1, 0, 1612095224, 1612095224);
+INSERT INTO `huike_controllers` VALUES (2, 'generate', '代码生成', 0, 1, 'generate', 0, 1, NULL, NULL, '', 1, 0, 1613885227, 1612102562);
+INSERT INTO `huike_controllers` VALUES (3, 'system', '系统设置', 0, 1, 'system', 0, 1, NULL, NULL, '', 1, 0, 1612102659, 1612102659);
+INSERT INTO `huike_controllers` VALUES (4, 'user', '管理用户', 0, 1, '', 0, 1, NULL, NULL, '', 1, 0, 1612102673, 1612102673);
+INSERT INTO `huike_controllers` VALUES (5, 'Login', '登录', 4, 1, 'login', 0, 1, 'dev login exception', -1000, '系统错误，请稍候再试', 1, 0, 1612102944, 1612102944);
+INSERT INTO `huike_controllers` VALUES (6, 'User', '用户', 4, 1, 'user', 0, 1, 'dev user exception', -1100, '系统错误，请稍候再试', 1, 0, 1612875654, 1612103316);
+INSERT INTO `huike_controllers` VALUES (7, 'Facade', '门面', 2, 1, 'facade', 0, 1, 'dev facade exception', -1200, '系统错误，请稍候再试', 1, 0, 1612103372, 1612103372);
+INSERT INTO `huike_controllers` VALUES (8, 'Migrate', '数据库迁移', 2, 1, 'migrate', 0, 1, 'dev migrate exception', -1500, '系统错误，请稍候再试', 1, 0, 1612103423, 1612103423);
+INSERT INTO `huike_controllers` VALUES (9, 'Model', '模型', 2, 1, 'model', 0, 1, 'dev model exception', -1300, '系统错误，请稍候再试', 1, 0, 1612103468, 1612103468);
+INSERT INTO `huike_controllers` VALUES (10, 'Actions', '逻辑方法', 3, 1, 'actions', 0, 1, 'dev actions exception', -1800, '系统错误，请稍候再试', 1, 0, 1612103800, 1612103800);
+INSERT INTO `huike_controllers` VALUES (11, 'Controllers', '控制器', 3, 1, 'controllers', 0, 1, 'dev controllers exception', -1700, '系统错误，请稍候再试', 1, 0, 1612103955, 1612103955);
+INSERT INTO `huike_controllers` VALUES (12, 'Module', '模块管理', 3, 1, 'modules', 0, 1, 'dev module exception', -1600, '系统错误，请稍候再试', 1, 0, 1612875494, 1612103994);
 INSERT INTO `huike_controllers` VALUES (17, 'Developer', '开发者', 4, 1, 'developer', 1, 1, 'dev developer exception', -2300, '系统错误，请稍候再试', 1, 0, 1613535981, 1613535981);
-INSERT INTO `huike_controllers` VALUES (21, 'ControllerPath', '控制器目录', 3, 1, 'controller_path', 1, 1, 'dev controller path exception', -2400, '系统错误，请稍候再试', 1, 0, 1613797119, 1613797119);
+INSERT INTO `huike_controllers` VALUES (21, 'ControllerPath', '控制器目录', 3, 1, 'controller_path', 1, 1, 'dev controller path exception', -2400, '系统错误，请稍候再试', 1, 0, 1614000779, 1613797119);
 
 -- ----------------------------
 -- Table structure for huike_developer
@@ -163,12 +163,12 @@ CREATE TABLE `huike_developer`  (
   `update_time` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `username`(`username`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '管理员用户表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '管理员用户表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of huike_developer
 -- ----------------------------
-INSERT INTO `huike_developer` VALUES (1, 'huikedev', '$2y$10$SU1k1zhH3dodNXXmspk0nORR9N.2GrbTGH0N.FF4E5HB8PPxBDV9u', 9, '::1', 1613922475, '::1', 1613919848, 1, 0, 1589639264, 1613922475);
+INSERT INTO `huike_developer` VALUES (1, 'huikedev', '$2y$10$SU1k1zhH3dodNXXmspk0nORR9N.2GrbTGH0N.FF4E5HB8PPxBDV9u', 9, '127.0.0.1', 1614022825, '127.0.0.1', 1614016233, 1, 0, 1589639264, 1614022825);
 INSERT INTO `huike_developer` VALUES (2, 'admin', '$2y$10$QB01lb3vLTomVF7qy/dSB.FaQ5ZNUzxMQiotbkYDbaKllYrDNac/W', 19, '', 0, '', 0, 1, 1613645933, 1613645831, 1613645933);
 
 -- ----------------------------
@@ -213,9 +213,9 @@ CREATE TABLE `huike_facades`  (
   `create_time` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '创建时间',
   `update_time` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `origin_class`(`origin_class`(191)) USING BTREE,
-  INDEX `facade_class`(`facade_class`(191)) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+  INDEX `origin_class`(`origin_class`) USING BTREE,
+  INDEX `facade_class`(`facade_class`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of huike_facades
@@ -244,24 +244,25 @@ CREATE TABLE `huike_models`  (
   `is_creator_id` tinyint(4) NOT NULL DEFAULT 0 COMMENT '是否包含创建人字段',
   `migrate_version` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '数据库迁移版本',
   `migrate_file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '数据库迁移文件',
+  `seed_file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '数据库种子文件',
   `creator_id` int(11) NOT NULL DEFAULT 0 COMMENT '创建人ID',
   `delete_time` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '标记删除',
   `create_time` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '创建时间',
   `update_time` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `model_name`(`model_name`(191)) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+  INDEX `model_name`(`model_name`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of huike_models
 -- ----------------------------
-INSERT INTO `huike_models` VALUES (1, 'HuikeModules', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeModules', 1, 1, '', '', '', '应用模块', 1, 1, 1, 1, 0, '16139281849606', 'huikedev\\dev_admin\\src\\database\\migrations\\16139281849606_huike_modules.php', 1, 0, 1610780264, 1613928184);
-INSERT INTO `huike_models` VALUES (2, 'HuikeControllers', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeControllers', 1, 1, '', '', '', '后端控制器', 0, 1, 1, 1, 0, '16139281901409', 'huikedev\\dev_admin\\src\\database\\migrations\\16139281901409_huike_controllers.php', 1, 0, 1610780264, 1613928190);
-INSERT INTO `huike_models` VALUES (3, 'HuikeActions', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeActions', 1, 1, '', '', '', '逻辑方法', 1, 1, 1, 1, 0, '16139281962947', 'huikedev\\dev_admin\\src\\database\\migrations\\16139281962947_huike_actions.php', 1, 0, 1610780264, 1613928196);
-INSERT INTO `huike_models` VALUES (4, 'HuikeDeveloper', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeDeveloper', 1, 1, '', '', '', '开发者信息', 0, 1, 1, 1, 0, '16139282161378', 'huikedev\\dev_admin\\src\\database\\migrations\\16139282161378_huike_developer.php', 1, 0, 1610780264, 1613928216);
-INSERT INTO `huike_models` VALUES (5, 'HuikeExtendModules', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeExtendModules', 1, 1, '', '', '', '第三方模块信息', 0, 0, 0, 0, 0, '16139282234295', 'huikedev\\dev_admin\\src\\database\\migrations\\16139282234295_huike_extend_modules.php', 1, 0, 1610780264, 1613928223);
-INSERT INTO `huike_models` VALUES (6, 'HuikeFacades', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeFacades', 1, 1, '', '', '', '应用门面', 0, 1, 1, 1, 0, '16139281776963', 'huikedev\\dev_admin\\src\\database\\migrations\\16139281776963_huike_facades.php', 1, 0, 1610780264, 1613928177);
-INSERT INTO `huike_models` VALUES (7, 'HuikeModels', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeModels', 1, 1, '', '', '', '应用模型', 0, 1, 1, 1, 1, '16139281320435', 'huikedev\\dev_admin\\src\\database\\migrations\\16139281320435_huike_models.php', 1, 0, 1610780264, 1613928132);
+INSERT INTO `huike_models` VALUES (1, 'HuikeModules', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeModules', 1, 1, '', '', '', '应用模块', 1, 1, 1, 1, 0, '16140243892549', '16140243892549_huike_modules', 'HuikeModulesUswntj', 1, 0, 1610780264, 1614024421);
+INSERT INTO `huike_models` VALUES (2, 'HuikeControllers', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeControllers', 1, 1, '', '', '', '后端控制器', 0, 1, 1, 1, 0, '16140243934350', '16140243934350_huike_controllers', 'HuikeControllersCmbxfp', 1, 0, 1610780264, 1614024425);
+INSERT INTO `huike_models` VALUES (3, 'HuikeActions', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeActions', 1, 1, '', '', '', '逻辑方法', 1, 1, 1, 1, 0, '16140243992269', '16140243992269_huike_actions', 'HuikeActionsTspqze', 1, 0, 1610780264, 1614024428);
+INSERT INTO `huike_models` VALUES (4, 'HuikeDeveloper', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeDeveloper', 1, 1, '', '', '', '开发者信息', 0, 1, 1, 1, 0, '16140244043294', '16140244043294_huike_developer', 'HuikeDeveloperNjywvg', 1, 0, 1610780264, 1614024433);
+INSERT INTO `huike_models` VALUES (5, 'HuikeExtendModules', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeExtendModules', 1, 1, '', '', '', '第三方模块信息', 0, 0, 0, 0, 0, '16140243808384', '16140243808384_huike_extend_modules', 'HuikeExtendModulesQvrosa', 1, 0, 1610780264, 1614024414);
+INSERT INTO `huike_models` VALUES (6, 'HuikeFacades', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeFacades', 1, 1, '', '', '', '应用门面', 0, 1, 1, 1, 0, '16140243848677', '16140243848677_huike_facades', 'HuikeFacadesKqsnpe', 1, 0, 1610780264, 1614024417);
+INSERT INTO `huike_models` VALUES (7, 'HuikeModels', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeModels', 1, 1, '', '', '', '应用模型', 0, 1, 1, 1, 1, '16140244083162', '16140244083162_huike_models', 'HuikeModelsDbvals', 1, 0, 1610780264, 1614024436);
 
 -- ----------------------------
 -- Table structure for huike_modules
@@ -282,12 +283,12 @@ CREATE TABLE `huike_modules`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `module_name`(`module_name`) USING BTREE,
   UNIQUE INDEX `route_name`(`route_name`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '应用模块' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '应用模块' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of huike_modules
 -- ----------------------------
-INSERT INTO `huike_modules` VALUES (1, 'dev', '开发辅助', 'dev', '[\"huikedev\\\\dev_admin\\\\common\\\\middlewares\\\\DevRouteMiddleware\"]', '[\"core.local\"]', 3, 1, 1612095224, 1612095224, 0);
+INSERT INTO `huike_modules` VALUES (1, 'dev', '开发辅助', 'dev', '[\"huikedev\\\\dev_admin\\\\common\\\\middlewares\\\\DevRouteMiddleware\"]', '[\"huike.local\"]', 3, 1, 1612095224, 1614000712, 0);
 
 -- ----------------------------
 -- Table structure for migrations
@@ -300,18 +301,17 @@ CREATE TABLE `migrations`  (
   `end_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
   `breakpoint` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`version`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of migrations
 -- ----------------------------
-INSERT INTO `migrations` VALUES (16127211111966, 'HuikeExtendModules', '2021-02-08 02:15:38', '2021-02-08 02:15:38', 0);
-INSERT INTO `migrations` VALUES (16128573231287, 'Aaa', '2021-02-09 15:55:27', '2021-02-09 15:55:27', 0);
-INSERT INTO `migrations` VALUES (16128583373575, 'Seller', '2021-02-09 16:12:39', '2021-02-09 16:12:39', 0);
-INSERT INTO `migrations` VALUES (20201120145517, 'HuikeModels', '2020-11-22 21:56:20', '2020-11-22 21:56:20', 0);
-INSERT INTO `migrations` VALUES (20201122135024, 'HuikeFacades', '2020-11-22 21:56:20', '2020-11-22 21:56:20', 0);
-INSERT INTO `migrations` VALUES (20210121171150, 'HuikeModules', '2021-01-22 01:50:12', '2021-01-22 01:50:12', 0);
-INSERT INTO `migrations` VALUES (20210123034231, 'HuikeControllers', '2021-01-23 11:48:00', '2021-01-23 11:48:00', 0);
-INSERT INTO `migrations` VALUES (20210124035344, 'HuikeActions', '2021-01-24 12:00:05', '2021-01-24 12:00:05', 0);
+INSERT INTO `migrations` VALUES (16139306879133, 'HuikeExtendModules', '2021-02-22 02:17:13', '2021-02-22 02:17:13', 0);
+INSERT INTO `migrations` VALUES (16139306981403, 'HuikeFacades', '2021-02-22 02:17:13', '2021-02-22 02:17:13', 0);
+INSERT INTO `migrations` VALUES (16139307019311, 'HuikeModules', '2021-02-22 02:17:13', '2021-02-22 02:17:13', 0);
+INSERT INTO `migrations` VALUES (16139307057018, 'HuikeControllers', '2021-02-22 02:17:13', '2021-02-22 02:17:13', 0);
+INSERT INTO `migrations` VALUES (16139307106177, 'HuikeActions', '2021-02-22 02:17:13', '2021-02-22 02:17:13', 0);
+INSERT INTO `migrations` VALUES (16139307147027, 'HuikeDeveloper', '2021-02-22 02:17:13', '2021-02-22 02:17:13', 0);
+INSERT INTO `migrations` VALUES (16139311122396, 'HuikeModels', '2021-02-22 02:17:13', '2021-02-22 02:17:13', 0);
 
 SET FOREIGN_KEY_CHECKS = 1;

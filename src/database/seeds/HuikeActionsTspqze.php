@@ -2,7 +2,7 @@
 
 use think\migration\Seeder;
 
-class HuikeActionsPnughq extends Seeder
+class HuikeActionsTspqze extends Seeder
 {
     /**
      * Run Method.
@@ -15,7 +15,7 @@ class HuikeActionsPnughq extends Seeder
     public function run()
     {
 
-    
+
 		// id = 1
 		think\facade\Db::table('huike_actions')->insert(['id' => 1,'action_name' => 'index','action_title' => '登录','controller_id' => 5,'route_name' => 'index','request_method' => 1,'service_return_type' => 'array_object','is_need_permission' => 0,'notice_type' => 3,'remind_msg' => '登录成功，请稍后','is_private' => 0,'creator_id' => 1,'create_time' => 1612119224,'update_time' => 1612119224]);
 		// id = 2
@@ -86,8 +86,6 @@ class HuikeActionsPnughq extends Seeder
 		think\facade\Db::table('huike_actions')->insert(['id' => 34,'action_name' => 'index','action_title' => '列表','controller_id' => 12,'route_name' => 'index','service_return_type' => 'paginator','creator_id' => 1,'create_time' => 1612179992,'update_time' => 1612179992]);
 		// id = 35
 		think\facade\Db::table('huike_actions')->insert(['id' => 35,'action_name' => 'create','action_title' => '新增','controller_id' => 12,'route_name' => 'create','request_method' => 1,'service_return_type' => 'bool','notice_type' => 9,'remind_msg' => '模块创建成功','creator_id' => 1,'create_time' => 1612180010,'update_time' => 1612180010]);
-		// id = 36
-		think\facade\Db::table('huike_actions')->insert(['id' => 36,'action_name' => 'routeMiddlewares','action_title' => '路由中间件列表','controller_id' => 12,'route_name' => 'routeMiddlewares','service_return_type' => 'array','creator_id' => 1,'create_time' => 1612180029,'update_time' => 1612180029]);
 		// id = 37
 		think\facade\Db::table('huike_actions')->insert(['id' => 37,'action_name' => 'simpleList','action_title' => '简单列表','controller_id' => 12,'route_name' => 'simpleList','service_return_type' => 'array','creator_id' => 1,'create_time' => 1612180052,'update_time' => 1612180052]);
 		// id = 38
@@ -97,7 +95,7 @@ class HuikeActionsPnughq extends Seeder
 		// id = 42
 		think\facade\Db::table('huike_actions')->insert(['id' => 42,'action_name' => 'edit','action_title' => '修改','controller_id' => 12,'route_name' => 'edit','request_method' => 1,'service_return_type' => 'bool','notice_type' => 9,'remind_msg' => '修改模块设置成功','remark' => '修改模块设置','creator_id' => 1,'create_time' => 1612873972,'update_time' => 1612873972]);
 		// id = 43
-		think\facade\Db::table('huike_actions')->insert(['id' => 43,'action_name' => 'generateRouteRule','action_title' => '生成路由','controller_id' => 12,'route_name' => 'generateRouteRule','request_method' => 1,'service_return_type' => 'bool','notice_type' => 9,'remind_msg' => '路由生成成功，请前往对应的模块目录查看','remark' => '路由生成','creator_id' => 1,'create_time' => 1612875222,'update_time' => 1612875222]);
+		think\facade\Db::table('huike_actions')->insert(['id' => 43,'action_name' => 'refreshRoutes','action_title' => '刷新路由配置','controller_id' => 12,'route_name' => 'refreshRoutes','request_method' => 1,'service_return_type' => 'bool','notice_type' => 9,'remind_msg' => '路由生成成功，请前往对应的模块目录查看','remark' => '路由生成','creator_id' => 1,'create_time' => 1612875222,'update_time' => 1612875222]);
 		// id = 44
 		think\facade\Db::table('huike_actions')->insert(['id' => 44,'action_name' => 'index','action_title' => '列表','controller_id' => 17,'route_name' => 'index','service_return_type' => 'paginator','creator_id' => 1,'create_time' => 1613536801,'update_time' => 1613536801]);
 		// id = 45
@@ -121,6 +119,8 @@ class HuikeActionsPnughq extends Seeder
 		// id = 54
 		think\facade\Db::table('huike_actions')->insert(['id' => 54,'action_name' => 'delete','action_title' => '删除','controller_id' => 21,'route_name' => 'delete','request_method' => 1,'service_return_type' => 'bool','notice_type' => 9,'remind_msg' => '控制器目录删除成功！','remark' => '删除','creator_id' => 1,'create_time' => 1613797768,'update_time' => 1613797768]);
 		// id = 55
-		think\facade\Db::table('huike_actions')->insert(['id' => 55,'action_name' => 'simpleList','action_title' => '简单列表','controller_id' => 21,'route_name' => 'simpleList','service_return_type' => 'array','creator_id' => 1,'create_time' => 1613804705,'update_time' => 1613804705]);
+		think\facade\Db::table('huike_actions')->insert(['id' => 55,'action_name' => 'simpleList','action_title' => '简单列表','controller_id' => 21,'route_name' => 'simpleList','service_return_type' => 'array','creator_id' => 1,'create_time' => 1613804705,'update_time' => 1614015881]);
+		// id = 56
+		think\facade\Db::table('huike_actions')->insert(['id' => 56,'action_name' => 'refreshException','action_title' => '刷新异常配置','controller_id' => 12,'route_name' => 'refreshException','request_method' => 1,'service_return_type' => 'bool','notice_type' => 6,'remind_msg' => '刷新异常配置文件成功','creator_id' => 1,'create_time' => 1614006250,'update_time' => 1614006250]);
 }
 }

@@ -1,4 +1,5 @@
 
+
 	//======================开发辅助 - 登录======================
 	Route::group('login',function(){
 		//登录 - 登录
@@ -103,8 +104,6 @@
 		Route::get('index', 'index');
 		//模块管理 - 新增
 		Route::post('create', 'create');
-		//模块管理 - 路由中间件列表
-		Route::get('routeMiddlewares', 'routeMiddlewares');
 		//模块管理 - 简单列表
 		Route::get('simpleList', 'simpleList');
 		//模块管理 - 第三方模块列表
@@ -112,7 +111,9 @@
 		//模块管理 - 修改模块设置
 		Route::post('edit', 'edit');
 		//模块管理 - 路由生成
-		Route::post('generateRouteRule', 'generateRouteRule');
+		Route::post('refreshRoutes', 'refreshRoutes');
+		//模块管理 - 刷新异常配置
+		Route::post('refreshException', 'refreshException');
 	})->prefix('dev.system.Module/');
 
 	//======================开发辅助 - 开发者======================

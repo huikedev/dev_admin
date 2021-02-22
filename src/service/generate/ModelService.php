@@ -38,7 +38,7 @@ class ModelService extends GenerateServiceAbstract
         return app(Delete::class,[],true)->handle();
     }
 
-    public function read():bool
+    public function read():Model
     {
         return app(Read::class,[],true)->handle();
     }

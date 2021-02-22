@@ -32,6 +32,7 @@ class DeveloperCache extends AppCachingAbstract
     // 对于模型或数据集的操作都应该将数组注入到对应的模型来获得模型实例
     protected function parseDataToModel()
     {
+
         // 判断是否需要从redis中获取数据
         if(is_null($this->model) === false && $this->update === false){
             return $this;

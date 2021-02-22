@@ -7,7 +7,7 @@ namespace huikedev\dev_admin\service\system\provider\actions;
 use huikedev\dev_admin\common\model\huike\HuikeActions;
 use huikedev\dev_admin\common\model\huike\HuikeControllers;
 use huikedev\huike_base\facade\AppRequest;
-use huikedev\huike_base\init\HuikePaginator;
+use huike\common\init\HuikePaginator;
 use huikedev\huike_base\utils\UtilsTools;
 use think\Collection;
 
@@ -23,7 +23,6 @@ class UnSynced
     /**
      * @var int
      */
-    protected $parsedSum = 0;
     protected $index = 0;
     /**
      * @var Collection

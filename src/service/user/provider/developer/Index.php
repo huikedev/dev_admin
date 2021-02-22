@@ -3,8 +3,6 @@
 namespace huikedev\dev_admin\service\user\provider\developer;
 
 use huikedev\dev_admin\common\model\huike\HuikeDeveloper;
-use huikedev\huike_base\facade\AppRequest;
-use huikedev\huike_base\interceptor\auth\facade\Auth;
 use think\Paginator;
 
 

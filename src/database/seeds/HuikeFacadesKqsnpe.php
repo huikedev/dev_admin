@@ -2,7 +2,7 @@
 
 use think\migration\Seeder;
 
-class HuikeFacadesTbvehf extends Seeder
+class HuikeFacadesKqsnpe extends Seeder
 {
     /**
      * Run Method.
@@ -15,7 +15,7 @@ class HuikeFacadesTbvehf extends Seeder
     public function run()
     {
 
-    
+
 		// id = 1
 		think\facade\Db::table('huike_facades')->insert(['id' => 1,'origin_class' => 'huikedev\dev_admin\common\caching\provider\routes\DevActionsCache','facade_class' => 'huikedev\dev_admin\common\caching\facade\DevActionsCache','facade_path' => 'huikedev\dev_admin\src\common\caching\facade','facade_title' => '路由方法缓存','type_id' => 3,'action_count' => 7,'update_times' => 2,'creator_id' => 1,'create_time' => 1613731609,'update_time' => 1613731659]);
 		// id = 2

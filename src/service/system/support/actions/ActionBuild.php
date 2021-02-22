@@ -6,7 +6,6 @@ namespace huikedev\dev_admin\service\system\support\actions;
 
 use huikedev\dev_admin\common\model\huike\HuikeActions;
 use huikedev\huike_generator\generator\logic_skeleton\execute\controller\MakeController;
-use huikedev\huike_generator\generator\logic_skeleton\execute\facade\MakeFacade;
 use huikedev\huike_generator\generator\logic_skeleton\execute\logic\MakeLogicClass;
 use huikedev\huike_generator\generator\logic_skeleton\execute\service\MakeService;
 use huikedev\huike_generator\generator\logic_skeleton\execute\service\MakeServiceException;

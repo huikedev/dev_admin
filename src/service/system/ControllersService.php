@@ -11,8 +11,6 @@ use huikedev\dev_admin\service\system\provider\controllers\Index;
 use huikedev\dev_admin\service\system\provider\controllers\SimpleList;
 use huikedev\dev_admin\service\system\provider\controllers\Sync;
 use huikedev\dev_admin\service\system\provider\controllers\UnSynced;
-use huikedev\dev_admin\service\system\provider\controllers\Prefix;
-use huikedev\dev_admin\service\system\provider\controllers\PathList;
 
 class ControllersService
 {
@@ -55,26 +53,5 @@ class ControllersService
     {
         return app(SimpleList::class,[],true)->handle();
     }
-
-	 /**
-	 * @desc 前缀列表
-	 * @huike service
-	 * @return array
-	 */
-	public function prefix():array
-	{
-		return app(Prefix::class,[],true)->handle();
-	}
-
-
-	 /**
-	 * @desc 控制器目录
-	 * @huike service
-	 * @return array
-	 */
-	public function pathList():array
-	{
-		return app(PathList::class,[],true)->handle();
-	}
 
 }

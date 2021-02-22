@@ -29,7 +29,7 @@ class HuikeModules extends Migrator
     public function change()
     {
 
-    	//原始表创建于：2021-02-22 01:56:37,数据库迁移文件生成于：2021-02-22 02:05:01
+	//原始表创建于：2021-02-22 02:17:13,数据库迁移文件生成于：2021-02-23 04:06:29
 		$table = $this->table('huike_modules')->setCollation('utf8mb4_general_ci')->setEngine('InnoDB')->setComment('应用模块');
 		$table->setId('id')
 			->addColumn(Column::string('module_name',50)->setComment('模块名称（英文），即目录名称'))

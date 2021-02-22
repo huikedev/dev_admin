@@ -5,8 +5,6 @@ namespace huikedev\dev_admin\service\system\provider\controllers;
 
 
 use huikedev\dev_admin\common\model\huike\HuikeControllers;
-use huikedev\huike_base\utils\UtilsTools;
-use think\helper\Str;
 
 class SimpleList
 {

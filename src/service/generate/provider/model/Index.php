@@ -4,15 +4,10 @@
 namespace huikedev\dev_admin\service\generate\provider\model;
 
 
-use huikedev\huike_base\app_const\NoticeType;
 use huikedev\huike_base\facade\AppRequest;
 use huikedev\dev_admin\common\model\huike\HuikeModels;
-use huikedev\dev_admin\service\generate\exception\ModelServiceException;
-use huikedev\dev_admin\service\generate\support\MigrateUtils;
-use Phinx\Util\Util;
 use think\db\exception\PDOException;
 use think\facade\Db;
-use think\helper\Str;
 use think\Paginator;
 
 class Index

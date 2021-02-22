@@ -10,7 +10,6 @@ use huikedev\dev_admin\service\system\exception\ControllersServiceException;
 use huikedev\huike_base\app_const\NoticeType;
 use huikedev\huike_base\facade\AppRequest;
 use huikedev\huike_base\utils\UtilsTools;
-use think\helper\Str;
 
 class Sync extends ControllerSetAbstract
 {

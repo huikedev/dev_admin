@@ -8,7 +8,6 @@ use huikedev\huike_base\facade\AppRequest;
 use huikedev\dev_admin\common\model\huike\HuikeModules;
 use huikedev\huike_base\facade\FileSystem;
 use huikedev\huike_base\lib\ClassInfo;
-use think\Paginator;
 
 class Index
 {

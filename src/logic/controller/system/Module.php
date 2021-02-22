@@ -50,23 +50,6 @@ class Module extends BaseLogic
 
 
 	 /**
-	 * @desc 路由中间件列表
-	 * @huike logic
-	 * @return self
-	 * @throws AppLogicException
-	 */
-	public function routeMiddlewares():self
-	{
-		try{
-			$this->data = ModuleService::routeMiddlewares();
-		}catch (AppServiceException $serviceException){
-			throw new AppLogicException($serviceException);
-		}
-		return $this;
-	}
-
-
-	 /**
 	 * @desc 简单列表
 	 * @huike logic
 	 * @return self
@@ -125,12 +108,31 @@ class Module extends BaseLogic
 	 * @return self
 	 * @throws AppLogicException
 	 */
-	public function generateRouteRule():self
+	public function refreshRoutes():self
 	{
 		try{
-			ModuleService::generateRouteRule();
+			ModuleService::refreshRoutes();
 			$this->noticeType = NoticeType::DIALOG_SUCCESS;
 			$this->msg = '路由生成成功，请前往对应的模块目录查看';
+		}catch (AppServiceException $serviceException){
+			throw new AppLogicException($serviceException);
+		}
+		return $this;
+	}
+
+
+	 /**
+	 * @desc 刷新异常配置
+	 * @huike logic
+	 * @return self
+	 * @throws AppLogicException
+	 */
+	public function refreshException():self
+	{
+		try{
+			ModuleService::refreshException();
+			$this->noticeType = NoticeType::NOTIFICATION_SUCCESS;
+			$this->msg = '刷新异常配置文件成功';
 		}catch (AppServiceException $serviceException){
 			throw new AppLogicException($serviceException);
 		}

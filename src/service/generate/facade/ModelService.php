@@ -15,7 +15,7 @@ use think\Paginator;
  * @method mixed simpleList() static 
  * @method bool create() static 
  * @method bool delete() static 
- * @method bool read() static 
+ * @method Model read() static
  * @method bool syncProperty() static 
  * @method Model getFields() static
  * @method bool updateAnnotation() static 

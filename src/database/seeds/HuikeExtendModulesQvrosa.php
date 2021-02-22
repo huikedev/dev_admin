@@ -2,7 +2,7 @@
 
 use think\migration\Seeder;
 
-class HuikeExtendModulesBychsk extends Seeder
+class HuikeExtendModulesQvrosa extends Seeder
 {
     /**
      * Run Method.
@@ -15,7 +15,7 @@ class HuikeExtendModulesBychsk extends Seeder
     public function run()
     {
 
-    
+
 		// id = 1
 		think\facade\Db::table('huike_extend_modules')->insert(['id' => 1,'root_path' => 'huikedev/wap','root_namespace' => 'huikedev/wap']);
 		// id = 2

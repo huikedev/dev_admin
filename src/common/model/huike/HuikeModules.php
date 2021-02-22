@@ -2,9 +2,14 @@
 
 namespace huikedev\dev_admin\common\model\huike;
 
+use huikedev\dev_admin\common\caching\facade\DevActionsCache;
 use huikedev\dev_admin\common\model_trait\CreatorTrait;
+use huikedev\dev_admin\service\system\support\exceptions\RebuildExceptionLang;
+use huikedev\dev_admin\service\system\support\routes\RebuildRoutes;
 use huikedev\huike_base\base\BaseModel;
+use huikedev\huike_base\log\HuikeLog;
 use huikedev\huike_base\utils\UtilsTools;
+use think\Model;
 use think\model\concern\SoftDelete;
 
 
@@ -80,6 +85,28 @@ class HuikeModules extends BaseModel
                 $this->extendModule();
             }
             return UtilsTools::replaceSeparator(str_replace(app()->getRootPath(),'',$this->extend_module->root_path));
+        }
+    }
+
+    public static function onAfterWrite(Model $model): void
+    {
+        try {
+            (new RebuildRoutes())->setModuleId($model->id)->handle();
+            (new RebuildExceptionLang())->handle($model->id);
+            DevActionsCache::deleteCache();
+        }catch (\Throwable $e){
+            HuikeLog::error($e);
+        }
+    }
+
+    public static function onAfterDelete(Model $model): void
+    {
+        try {
+            (new RebuildRoutes())->setModuleId($model->id)->handle();
+            (new RebuildExceptionLang())->handle($model->id);
+            DevActionsCache::deleteCache();
+        }catch (\Throwable $e){
+            HuikeLog::error($e);
         }
     }
 

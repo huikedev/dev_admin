@@ -12,10 +12,10 @@ use think\Paginator;
  * @mixin \huikedev\dev_admin\service\system\ModuleService
  * @method Paginator index() static 列表
  * @method bool create() static 新增
- * @method array routeMiddlewares() static 路由中间件列表
  * @method array simpleList() static 简单列表
  * @method array extendModules() static 第三方模块列表
  * @method bool edit() static 修改 修改模块设置
+ * @method bool refreshRoutes() static 生成路由 路由生成
  */
 class ModuleService extends Facade
 {

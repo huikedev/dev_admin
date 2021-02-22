@@ -15,9 +15,7 @@ use think\Facade;
  * @method mixed unSynced() static 
  * @method mixed sync() static 
  * @method mixed checkException() static 
- * @method mixed simpleList() static 
- * @method array prefix() static 前缀列表
- * @method array pathList() static 控制器目录
+ * @method mixed simpleList() static
  */
 class ControllersService extends Facade
 {

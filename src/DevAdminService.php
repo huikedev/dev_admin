@@ -4,14 +4,16 @@
 namespace huikedev\dev_admin;
 
 
-use huikedev\dev_admin\command\DevInstall;
+use huikedev\dev_admin\command\DevAdminInstall;
 use think\Service;
 
 class DevAdminService extends Service
 {
     public function register()
     {
-        $this->commands(DevInstall::class);
+        if($this->app->config->get('huike_dev_admin.is_installed',false) === false) {
+            $this->commands(DevAdminInstall::class);
+        }
     }
 
     public function boot()

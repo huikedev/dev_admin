@@ -5,11 +5,11 @@ namespace huikedev\dev_admin\service\system;
 use think\Paginator;
 use huikedev\dev_admin\service\system\provider\module\Index;
 use huikedev\dev_admin\service\system\provider\module\Create;
-use huikedev\dev_admin\service\system\provider\module\RouteMiddlewares;
 use huikedev\dev_admin\service\system\provider\module\SimpleList;
 use huikedev\dev_admin\service\system\provider\module\ExtendModules;
 use huikedev\dev_admin\service\system\provider\module\Edit;
-use huikedev\dev_admin\service\system\provider\module\GenerateRouteRule;
+use huikedev\dev_admin\service\system\provider\module\RefreshRoutes;
+use huikedev\dev_admin\service\system\provider\module\RefreshException;
 
 
 class ModuleService
@@ -37,16 +37,6 @@ class ModuleService
 		return app(Create::class,[],true)->handle();
 	}
 
-
-	 /**
-	 * @desc 路由中间件列表
-	 * @huike service
-	 * @return array
-	 */
-	public function routeMiddlewares():array
-	{
-		return app(RouteMiddlewares::class,[],true)->handle();
-	}
 
 
 	 /**
@@ -88,9 +78,20 @@ class ModuleService
 	 * @huike service
 	 * @return bool
 	 */
-	public function generateRouteRule():bool
+	public function refreshRoutes():bool
 	{
-		return app(GenerateRouteRule::class,[],true)->handle();
+		return app(RefreshRoutes::class,[],true)->handle();
+	}
+
+
+	 /**
+	 * @desc 刷新异常配置
+	 * @huike service
+	 * @return bool
+	 */
+	public function refreshException():bool
+	{
+		return app(RefreshException::class,[],true)->handle();
 	}
 
 }

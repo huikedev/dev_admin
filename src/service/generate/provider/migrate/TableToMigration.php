@@ -5,11 +5,9 @@ namespace huikedev\dev_admin\service\generate\provider\migrate;
 
 
 use huikedev\dev_admin\common\model\huike\HuikeModels;
-use huikedev\dev_admin\common\model\huike\HuikeModules;
 use huikedev\dev_admin\service\generate\exception\MigrateServiceException;
 use huikedev\huike_base\app_const\NoticeType;
 use huikedev\huike_base\facade\AppRequest;
-use huikedev\huike_base\utils\UtilsTools;
 
 class TableToMigration
 {
