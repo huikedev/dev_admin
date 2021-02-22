@@ -15,7 +15,10 @@
         }
     },
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "huikedev/huike_generator": "^0.0.0",
+        "huikedev/huike_base": "^0.0.0"
+    },
     "extra": {
         "think":{
             "services":[
