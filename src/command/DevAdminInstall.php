@@ -18,16 +18,16 @@ class DevAdminInstall extends InstallAbstract
     protected $path;
     protected $migrateStatus = true;
     protected $copyFiles=[
-      'app.controller.dev.generate.Facade',
-      'app.controller.dev.generate.Migrate',
-      'app.controller.dev.generate.Model',
-      'app.controller.dev.system.Actions',
-      'app.controller.dev.system.ControllerPath',
-      'app.controller.dev.system.Controllers',
-      'app.controller.dev.system.Module',
-      'app.controller.dev.user.Developer',
-      'app.controller.dev.user.Login',
-      'app.controller.dev.user.User',
+        'app.controller.dev.generate.Facade',
+        'app.controller.dev.generate.Migrate',
+        'app.controller.dev.generate.Model',
+        'app.controller.dev.system.Actions',
+        'app.controller.dev.system.ControllerPath',
+        'app.controller.dev.system.Controllers',
+        'app.controller.dev.system.Module',
+        'app.controller.dev.user.Developer',
+        'app.controller.dev.user.Login',
+        'app.controller.dev.user.User',
     ];
 
     protected function setRootPath(): void
@@ -45,6 +45,7 @@ class DevAdminInstall extends InstallAbstract
         $this->overwriteConfig();
         $this->runMigrates();
         $this->runSeeds();
+        $this->setModule();
         $this->output->info("系统安装完成，感谢您的使用！原始文件已生成备份，您可以比对代码来增加被覆盖的逻辑！");
     }
 
@@ -108,16 +109,18 @@ class DevAdminInstall extends InstallAbstract
     protected function setModule()
     {
         try {
-            $module = HuikeModules::where('id','=',1)->findOrEmpty();
-            if($module->isEmpty()){
-                throw new Exception('未找到ID=1的模块信息');
+            if($this->seedsStatus){
+                $module = HuikeModules::where('id','=',1)->findOrEmpty();
+                if($module->isEmpty()){
+                    throw new Exception('未找到ID=1的模块信息');
+                }
+                if(is_null($this->bindDomain)){
+                    $module->bind_domain = null;
+                }else{
+                    $module->bind_domain = [$this->bindDomain];
+                }
+                $module->save();
             }
-            if(is_null($this->bindDomain)){
-                $module->bind_domain = null;
-            }else{
-                $module->bind_domain = [$this->bindDomain];
-            }
-            $module->save();
         }catch (\Exception $e){
             $this->output->warning("模块数据更新失败:".$e->getMessage());
         }

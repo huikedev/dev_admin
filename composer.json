@@ -2,7 +2,7 @@
     "name": "huikedev/dev_admin",
     "description": "dev admin api for huikedev",
     "type": "think-extend",
-    "license": "MIT",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "liuqiandev",
