@@ -4,11 +4,13 @@
 namespace huikedev\dev_admin\service\generate\provider\migrate;
 
 
+use huikedev\dev_admin\common\interceptor\permission\DataPermission;
 use huikedev\huike_base\app_const\NoticeType;
 use huikedev\huike_base\facade\AppRequest;
 use huikedev\dev_admin\common\model\huike\HuikeModels;
 use huikedev\dev_admin\service\generate\exception\MigrateServiceException;
 use huikedev\dev_admin\service\generate\support\ParseModelFields;
+use huikedev\huike_base\interceptor\auth\exception\PermissionException;
 use huikedev\huike_base\utils\UtilsTools;
 use huikedev\huike_generator\migration\FillMigration;
 use huikedev\huike_generator\migration\MakeMigration;
@@ -25,6 +27,9 @@ class Create
          * @var HuikeModels $model
          */
         $model = HuikeModels::where('id','=',AppRequest::id())->findOrEmpty();
+        if(DataPermission::canEdit($model) === false){
+            throw new PermissionException('当前数据状态不可编辑',1);
+        }
         if($model->isEmpty()){
             throw new MigrateServiceException('未找到ID为【'.AppRequest::id().'】的模型',1,NoticeType::DIALOG_ERROR);
         }

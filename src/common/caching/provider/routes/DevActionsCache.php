@@ -10,6 +10,7 @@ use huikedev\dev_admin\common\model\huike\HuikeModules;
 use huikedev\dev_admin\common\caching\support\DevCachePrefix;
 use huikedev\huike_base\base\caching\AppSettingCacheAbstract;
 use huikedev\huike_base\facade\AppRequest;
+use think\facade\Config;
 
 class DevActionsCache extends AppSettingCacheAbstract
 {
@@ -53,7 +54,7 @@ class DevActionsCache extends AppSettingCacheAbstract
             $actionString .=$controller->controller_name.'/'.$action->action_name;
             $rules[$actionString] = [
                 'id'=>$action->id,
-                'is_private'=>$action->is_private,
+                'is_private'=>$action->is_private
             ];
         }
         return $rules;

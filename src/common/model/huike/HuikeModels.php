@@ -37,6 +37,7 @@ use think\model\concern\SoftDelete;
  * @property string $migrate_file 数据库迁移文件
  * @property string $seed_file 数据库种子文件
  * @property int $creator_id 创建人ID
+ * @property int $edit_level
  * @property int $delete_time 标记删除
  * @property string $create_time 创建时间
  * @property string $update_time 更新时间

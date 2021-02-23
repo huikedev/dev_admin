@@ -28,6 +28,7 @@ use think\model\concern\SoftDelete;
  * @property mixed $bind_domain 绑定域名
  * @property int $extend_module_id 第三方模块扩展ID
  * @property int $creator_id 创建人ID
+ * @property int $edit_level
  * @property string $create_time 创建时间
  * @property string $update_time 最后更新时间
  * @property int $delete_time 软删除时间
@@ -52,6 +53,16 @@ class HuikeModules extends BaseModel
     public function getFullPathAttr($value,$data)
     {
         return app()->getAppPath().'controller'.DIRECTORY_SEPARATOR.$data['module_name'];
+    }
+
+    public function getBindDomainAttr($value)
+    {
+        return is_array($value) ? $value : [];
+    }
+
+    public function getRouteMiddlewareAttr($value)
+    {
+        return is_array($value) ? $value : [];
     }
 
     public function controllers(): \think\model\relation\HasMany
@@ -91,9 +102,11 @@ class HuikeModules extends BaseModel
     public static function onAfterWrite(Model $model): void
     {
         try {
-            (new RebuildRoutes())->setModuleId($model->id)->handle();
-            (new RebuildExceptionLang())->handle($model->id);
-            DevActionsCache::deleteCache();
+            if($model->id > 1){
+                (new RebuildRoutes())->setModuleId($model->id)->handle();
+                (new RebuildExceptionLang())->handle($model->id);
+                DevActionsCache::deleteCache();
+            }
         }catch (\Throwable $e){
             HuikeLog::error($e);
         }
@@ -102,9 +115,11 @@ class HuikeModules extends BaseModel
     public static function onAfterDelete(Model $model): void
     {
         try {
-            (new RebuildRoutes())->setModuleId($model->id)->handle();
-            (new RebuildExceptionLang())->handle($model->id);
-            DevActionsCache::deleteCache();
+            if($model->id > 1) {
+                (new RebuildRoutes())->setModuleId($model->id)->handle();
+                (new RebuildExceptionLang())->handle($model->id);
+                DevActionsCache::deleteCache();
+            }
         }catch (\Throwable $e){
             HuikeLog::error($e);
         }

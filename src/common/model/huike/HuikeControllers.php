@@ -30,10 +30,12 @@ use think\model\concern\SoftDelete;
  * @property int $exception_code 异常code
  * @property string $exception_msg 异常message
  * @property int $creator_id 创建人ID
+ * @property int $edit_level
  * @property int $delete_time 软删除时间
  * @property string $update_time 最后更新时间
  * @property string $create_time 创建时间
  * @property-read \huikedev\dev_admin\common\model\huike\HuikeModules $module
+ * @property-read \huikedev\dev_admin\common\model\huike\HuikeControllers[] $controllers
  * @property-read \huikedev\dev_admin\common\model\huike\HuikeActions[] $actions
  * @property-read \huikedev\dev_admin\common\model\huike\HuikeControllers[] $children
  * @property-read \huikedev\dev_admin\common\model\huike\HuikeControllers $path
@@ -42,6 +44,8 @@ use think\model\concern\SoftDelete;
  * @property-read mixed $service_class
  * @property-read mixed $logic_file
  * @property-read mixed $logic_class
+ * @property-read mixed $validate_path
+ * @property-read mixed $validate_namespace
  * @property-read mixed $facade_class
  * @property-read mixed $facade_file
  * @property-read mixed $relate_path
@@ -50,6 +54,7 @@ use think\model\concern\SoftDelete;
  * @property-read mixed $provider_namespace
  * @property-read mixed $exception_class
  * @property-read mixed $exception_file
+ * @property-read mixed $creator
  */
 class HuikeControllers extends BaseModel
 {
@@ -209,14 +214,16 @@ class HuikeControllers extends BaseModel
     // 门面类类名 huike\service\dev\user\facade\LoginService
     public function getFacadeClassAttr($value,$data): string
     {
-        $namespace = pathinfo($this->getAttr('service_class'),PATHINFO_DIRNAME).'\\';
+        $serviceClass = $this->getAttr('service_class');
+        $namespace = UtilsTools::getNamespacePrefix($serviceClass).'\\';
         $namespace .='facade\\'.Str::studly($data['controller_name'].'Service');
         return UtilsTools::replaceNamespace($namespace);
     }
 
     public function getFacadeFileAttr($value,$data): string
     {
-        $path = pathinfo($this->getAttr('service_file'),PATHINFO_DIRNAME).DIRECTORY_SEPARATOR;
+        $serviceFile = $this->getAttr('service_file');
+        $path =UtilsTools::getNamespacePrefix($serviceFile).DIRECTORY_SEPARATOR;
         $path .='facade'.DIRECTORY_SEPARATOR.Str::studly($data['controller_name'].'Service').'.php';
         return UtilsTools::replaceSeparator($path);
     }
@@ -246,7 +253,8 @@ class HuikeControllers extends BaseModel
     // provider 路径
     public function getProviderPathAttr($value,$data):string
     {
-        $path =pathinfo($this->getAttr('service_file'),PATHINFO_DIRNAME).DIRECTORY_SEPARATOR;
+        $serviceFile = $this->getAttr('service_file');
+        $path =UtilsTools::getNamespacePrefix($serviceFile).DIRECTORY_SEPARATOR;
         if($data['path_id'] === 0){
            return  UtilsTools::replaceSeparator($path);
         }
@@ -258,7 +266,8 @@ class HuikeControllers extends BaseModel
 
     public function getProviderNamespaceAttr($value,$data):string
     {
-        $namespace =pathinfo($this->getAttr('service_class'),PATHINFO_DIRNAME);
+        $serviceClass = $this->getAttr('service_class');
+        $namespace = UtilsTools::getNamespacePrefix($serviceClass);
         if($data['path_id'] === 0){
             return  UtilsTools::replaceNamespace($namespace);
         }
@@ -270,7 +279,8 @@ class HuikeControllers extends BaseModel
 
     public function getExceptionClassAttr($value,$data): string
     {
-        $namespace =pathinfo($this->getAttr('service_class'),PATHINFO_DIRNAME);
+        $serviceClass = $this->getAttr('service_class');
+        $namespace = UtilsTools::getNamespacePrefix($serviceClass);
         $namespace .='\\exception\\';
         if($data['path_id'] === 0){
             return  UtilsTools::replaceNamespace($namespace);
@@ -281,21 +291,23 @@ class HuikeControllers extends BaseModel
 
     public function getExceptionFileAttr($value,$data)
     {
-        $namespace =pathinfo($this->getAttr('service_file'),PATHINFO_DIRNAME);
-        $namespace .=DIRECTORY_SEPARATOR.'exception';
+        $serviceFile = $this->getAttr('service_file');
+        $path =UtilsTools::getNamespacePrefix($serviceFile).DIRECTORY_SEPARATOR.'exception';
         if($data['path_id'] === 0){
-            return  UtilsTools::replaceSeparator($namespace);
+            return  UtilsTools::replaceSeparator($path);
         }
-        $namespace .=DIRECTORY_SEPARATOR.Str::studly($data['controller_name']).'ServiceException'.'.php';
-        return UtilsTools::replaceSeparator($namespace);
+        $path .=DIRECTORY_SEPARATOR.Str::studly($data['controller_name']).'ServiceException'.'.php';
+        return UtilsTools::replaceSeparator($path);
     }
 
     public static function onAfterWrite(Model $model): void
     {
         try {
-            (new RebuildRoutes())->setModuleId($model->module_id)->handle();
-            (new RebuildExceptionLang())->handle($model->module_id);
-            DevActionsCache::deleteCache();
+            if($model->module_id > 1) {
+                (new RebuildRoutes())->setModuleId($model->module_id)->handle();
+                (new RebuildExceptionLang())->handle($model->module_id);
+                DevActionsCache::deleteCache();
+            }
         }catch (\Throwable $e){
             HuikeLog::error($e);
         }
@@ -304,9 +316,11 @@ class HuikeControllers extends BaseModel
     public static function onAfterDelete(Model $model): void
     {
         try {
-            (new RebuildRoutes())->setModuleId($model->module_id)->handle();
-            (new RebuildExceptionLang())->handle($model->module_id);
-            DevActionsCache::deleteCache();
+            if($model->module_id > 1){
+                (new RebuildRoutes())->setModuleId($model->module_id)->handle();
+                (new RebuildExceptionLang())->handle($model->module_id);
+                DevActionsCache::deleteCache();
+            }
         }catch (\Throwable $e){
             HuikeLog::error($e);
         }

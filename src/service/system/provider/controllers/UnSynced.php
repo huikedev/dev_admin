@@ -77,12 +77,15 @@ class UnSynced
     protected function getPath(ClassInfo $classInfo,HuikeModules $module)
     {
         $path = str_replace(app()->getNamespace().'\\controller\\'.$module->module_name.'\\','',$classInfo->getFullClassName());
-        if($path === $classInfo->getClassName()){
+        $array = explode('\\',$path);
+        array_pop($array);
+        if(count($array) === 0){
             return '/';
         }else{
-            return pathinfo($path,PATHINFO_DIRNAME);
+            return implode('\\',$array);
         }
     }
+
 
     protected function getMethods(string $className):array
     {

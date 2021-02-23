@@ -4,8 +4,10 @@
 namespace huikedev\dev_admin\service\generate\provider\model;
 
 
+use huikedev\dev_admin\common\interceptor\permission\DataPermission;
 use huikedev\huike_base\facade\AppRequest;
 use huikedev\dev_admin\common\model\huike\HuikeModels;
+use huikedev\huike_base\interceptor\auth\exception\PermissionException;
 use think\facade\Db;
 
 class Delete
@@ -16,6 +18,9 @@ class Delete
          * @var HuikeModels
          */
         $model = HuikeModels::where('id','=',AppRequest::id())->findOrEmpty();
+        if(DataPermission::canEdit($model) === false){
+            throw new PermissionException('当前数据状态不可编辑',1);
+        }
         if($model->isExists()){
             try {
                 $facadeClass = new \ReflectionClass($model->model_full_name);

@@ -33,6 +33,7 @@ use think\model\concern\SoftDelete;
  * @property int $response_type 响应类型
  * @property string $remind_msg 提示消息
  * @property bool $is_private 是否公开访问
+ * @property int $edit_level 编辑级别
  * @property string $remark 备注
  * @property int $creator_id 创建人ID
  * @property string $create_time 创建时间
@@ -44,6 +45,8 @@ use think\model\concern\SoftDelete;
  * @property-read string $response_type_text
  * @property-read string $service_return_type_text
  * @property-read mixed $action_service_class
+ * @property-read mixed $service_handler
+ * @property-read mixed $creator
  */
 class HuikeActions extends BaseModel
 {
@@ -133,8 +136,10 @@ class HuikeActions extends BaseModel
     public static function onAfterWrite(Model $model): void
     {
         try {
-            DevActionsCache::deleteCache();
-            (new RebuildRoutes())->setControllerId($model->controller_id)->handle();
+            if($model->controller_id > 21) {
+                DevActionsCache::deleteCache();
+                (new RebuildRoutes())->setControllerId($model->controller_id)->handle();
+            }
         }catch (\Throwable $e){
             HuikeLog::error($e);
         }
@@ -143,8 +148,10 @@ class HuikeActions extends BaseModel
     public static function onAfterDelete(Model $model): void
     {
         try {
-            DevActionsCache::deleteCache();
-            (new RebuildRoutes())->setControllerId($model->controller_id)->handle();
+            if($model->controller_id > 21) {
+                DevActionsCache::deleteCache();
+                (new RebuildRoutes())->setControllerId($model->controller_id)->handle();
+            }
         }catch (\Throwable $e){
             HuikeLog::error($e);
         }

@@ -27,6 +27,7 @@ class SpeedCreate extends ActionSetAbstract
 	 */
 	public function handle()
 	{
+
         $actions = AppRequest::safeArray('actions');
         if(count($actions) === 0){
             throw new ActionsServiceException('请指定需要创建的方法',53);
@@ -49,12 +50,12 @@ class SpeedCreate extends ActionSetAbstract
                 $speedAction->save();
                 $temp['result'] = (new ActionBuild($speedAction))->handle()->getResult();
                 $temp['status']='success';
+                $speedAction->commit();
             }catch (\Exception $e){
                 $speedAction->rollback();
                 $temp['result'] = $e->getMessage();
                 $temp['status']='error';
             }
-            $speedAction->commit();
             $this->result[] = $temp;
         }
     }

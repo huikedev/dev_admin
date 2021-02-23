@@ -6,5 +6,7 @@ return [
     'positions'=>[
         ['id'=>9,'title'=>'后端开发'],
         ['id'=>19,'title'=>'前端开发'],
-    ]
+    ],
+    // edit_level
+    'edit_level'=> 9
 ];

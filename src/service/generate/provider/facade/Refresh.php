@@ -4,10 +4,12 @@
 namespace huikedev\dev_admin\service\generate\provider\facade;
 
 
+use huikedev\dev_admin\common\interceptor\permission\DataPermission;
 use huikedev\huike_base\app_const\NoticeType;
 use huikedev\huike_base\facade\AppRequest;
 use huikedev\dev_admin\common\model\huike\HuikeFacades;
 use huikedev\dev_admin\service\generate\exception\FacadeServiceException;
+use huikedev\huike_base\interceptor\auth\exception\PermissionException;
 use huikedev\huike_generator\generator\logic_skeleton\execute\facade\MakeFacade;
 
 class Refresh
@@ -15,6 +17,9 @@ class Refresh
     public function handle()
     {
         $facade = HuikeFacades::where('id','=',AppRequest::id())->findOrEmpty();
+        if(DataPermission::canEdit($facade) === false){
+            throw new PermissionException('当前数据状态不可编辑',1);
+        }
         if($facade->isEmpty()){
             throw new FacadeServiceException('未找到ID为【'.AppRequest::id().'】的门面类记录',51,NoticeType::DIALOG_ERROR);
         }

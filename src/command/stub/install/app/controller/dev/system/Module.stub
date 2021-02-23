@@ -34,17 +34,6 @@ class Module extends DevController
 	}
 
 
-	 /**
-	 * @desc 路由中间件列表
-	 * @huike controller
-	 * @return mixed
-	 * @throws ResponseException
-	 */
-	public function routeMiddlewares()
-	{
-		return $this->response->render();
-	}
-
 
 	 /**
 	 * @desc 简单列表
@@ -84,12 +73,23 @@ class Module extends DevController
 
 
     /**
-     * @desc 生成路由
+     * @desc 刷新路由
      * @huike controller
      * @return mixed
      * @throws ResponseException
      */
-    public function generateRouteRule()
+    public function refreshRoutes()
+    {
+        return $this->response->render();
+    }
+
+    /**
+     * @desc 刷新异常信息语言包
+     * @huike controller
+     * @return mixed
+     * @throws ResponseException
+     */
+    public function refreshException()
     {
         return $this->response->render();
     }

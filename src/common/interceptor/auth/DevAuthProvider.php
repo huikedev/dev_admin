@@ -5,6 +5,8 @@ namespace huikedev\dev_admin\common\interceptor\auth;
 use huikedev\dev_admin\common\caching\facade\DevActionsCache;
 use huikedev\huike_base\facade\AppRequest;
 use huikedev\huike_base\interceptor\auth\contract\AuthAbstract;
+use huikedev\huike_base\interceptor\auth\exception\AuthException;
+use huikedev\huike_base\interceptor\auth\exception\PermissionException;
 use huikedev\huike_base\interceptor\auth\support\token\facade\Token;
 use huikedev\huike_base\log\HuikeLog;
 use think\facade\Config;
@@ -16,6 +18,7 @@ class DevAuthProvider extends AuthAbstract
     {
         $this->client = AppRequest::module();
     }
+
 
     protected function auth()
     {

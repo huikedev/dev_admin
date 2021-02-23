@@ -4,9 +4,11 @@
 namespace huikedev\dev_admin\service\generate\provider\model;
 
 
+use huikedev\dev_admin\common\interceptor\permission\DataPermission;
 use huikedev\huike_base\facade\AppRequest;
 use huikedev\dev_admin\common\model\huike\HuikeModels;
 use huikedev\dev_admin\service\generate\exception\ModelServiceException;
+use huikedev\huike_base\interceptor\auth\exception\PermissionException;
 use think\facade\Console;
 
 class UpdateAnnotation
@@ -17,6 +19,9 @@ class UpdateAnnotation
          * @var HuikeModels $model
          */
         $model = HuikeModels::where('id','=',AppRequest::id())->findOrEmpty();
+        if(DataPermission::canEdit($model) === false){
+            throw new PermissionException('当前数据状态不可编辑',1);
+        }
         if($model->isEmpty()){
             throw new ModelServiceException('未找到ID为【'.AppRequest::id().'】的模型',81);
         }

@@ -4,6 +4,7 @@
 namespace huikedev\dev_admin\service\system\contract;
 
 
+use huikedev\dev_admin\common\interceptor\permission\DataPermission;
 use huikedev\dev_admin\common\model\huike\HuikeActions;
 use huikedev\dev_admin\common\model\huike\HuikeControllers;
 use huikedev\dev_admin\common\model\huike\HuikeModules;
@@ -12,6 +13,7 @@ use huikedev\huike_base\app_const\NoticeType;
 use huikedev\huike_base\app_const\RequestMethods;
 use huikedev\huike_base\app_const\ServiceReturnType;
 use huikedev\huike_base\facade\AppRequest;
+use huikedev\huike_base\interceptor\auth\exception\PermissionException;
 use huikedev\huike_base\interceptor\auth\facade\Auth;
 use huikedev\huike_base\utils\UtilsTools;
 use think\Exception;
@@ -43,6 +45,9 @@ abstract class ActionSetAbstract
     {
         // 控制器检测
         $this->controllerModel = HuikeControllers::where('id','=',AppRequest::safeInteger('controller_id'))->findOrEmpty();
+        if(DataPermission::canEdit($this->controllerModel) === false){
+            throw new PermissionException('当前数据状态不可编辑',1);
+        }
         if($this->controllerModel->isEmpty()){
             throw new ActionsServiceException('控制器不存在，请确认后提交',$this->errorCode + 1,NoticeType::DIALOG_ERROR);
         }

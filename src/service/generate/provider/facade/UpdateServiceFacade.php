@@ -4,10 +4,12 @@ namespace huikedev\dev_admin\service\generate\provider\facade;
 
 
 
+use huikedev\dev_admin\common\interceptor\permission\DataPermission;
 use huikedev\dev_admin\common\model\huike\HuikeControllers;
 use huikedev\dev_admin\service\generate\exception\FacadeServiceException;
 use huikedev\huike_base\app_const\NoticeType;
 use huikedev\huike_base\facade\AppRequest;
+use huikedev\huike_base\interceptor\auth\exception\PermissionException;
 use huikedev\huike_generator\generator\logic_skeleton\execute\service\MakeServiceFacade;
 
 class UpdateServiceFacade
@@ -22,10 +24,14 @@ class UpdateServiceFacade
 	public function handle():bool
 	{
 		$controllerId = AppRequest::safeInteger('controller_id');
+
         /**
          * @var HuikeControllers $controller
          */
 		$controller = HuikeControllers::where('id','=',$controllerId)->findOrEmpty();
+        if(DataPermission::canEdit($controller) === false){
+            throw new PermissionException('当前数据状态不可编辑',1);
+        }
 		if($controller->isEmpty()){
             throw new FacadeServiceException('未找到ID为【'.$controllerId.'】的控制器',51,NoticeType::DIALOG_ERROR);
         }

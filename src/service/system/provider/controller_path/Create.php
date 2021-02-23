@@ -32,12 +32,13 @@ class Create extends ControllerSetAbstract
      * @return bool
      * @throws ControllerPathServiceException
      */
-	public function handle():bool
-	{
+    public function handle():bool
+    {
         $this->module = HuikeModules::where('id', '=', AppRequest::safeInteger('module_id'))->findOrEmpty();
         if ($this->module->isEmpty()) {
             throw new ControllerPathServiceException('未找到ID为【' . AppRequest::safeInteger('module_id') . '】的模块', 1, NoticeType::DIALOG_ERROR);
         }
+        $this->controllerName = AppRequest::safeString('controller_name');
         $this->controllerName = UtilsTools::replaceNamespace($this->controllerName);
         $this->controller =  HuikeControllers::withTrashed()->where('module_id', '=', $this->module->id)
             ->where('controller_name', '=', $this->controllerName)
@@ -57,9 +58,7 @@ class Create extends ControllerSetAbstract
             $this->controller->path_id = 0;
             $this->controller->creator_id = Auth::getUserId();
             $this->controller->created_by_huike = 1;
-            if (AppRequest::has('route_name') === false) {
-                $this->controller->route_name = UtilsTools::replaceSeparator($this->controller->controller_name, '/');
-            } else {
+            if(AppRequest::has('route_name')){
                 $this->controller->route_name = UtilsTools::replaceSeparator(AppRequest::safeString('route_name'), '/');
             }
             $this->controller->save();
@@ -72,6 +71,6 @@ class Create extends ControllerSetAbstract
         }
         $this->controller->commit();
         return true;
-	}
+    }
 
 }

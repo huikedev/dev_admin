@@ -10,7 +10,7 @@ use think\cache\Driver;
 /**
  * @see \huikedev\dev_admin\common\caching\provider\routes\DevActionsCache
  * @mixin \huikedev\dev_admin\common\caching\provider\routes\DevActionsCache
- * @method bool isPublic(string $fullActionName=null) static 
+ * @method bool isPublic(string $fullActionName=null) static
  * @method mixed getAll() static 
  * @method Driver cacheHandle() static 
  * @method int getRedisCount() static 

@@ -4,12 +4,14 @@
 namespace huikedev\dev_admin\service\system\provider\controllers;
 
 
+use huikedev\dev_admin\common\interceptor\permission\DataPermission;
 use huikedev\dev_admin\common\model\huike\HuikeControllers;
 use huikedev\dev_admin\common\model\huike\HuikeModules;
 use huikedev\dev_admin\service\system\contract\ControllerSetAbstract;
 use huikedev\dev_admin\service\system\exception\ControllersServiceException;
 use huikedev\huike_base\app_const\NoticeType;
 use huikedev\huike_base\facade\AppRequest;
+use huikedev\huike_base\interceptor\auth\exception\PermissionException;
 use huikedev\huike_base\interceptor\auth\facade\Auth;
 use huikedev\huike_base\utils\UtilsTools;
 
@@ -28,6 +30,9 @@ class Create extends ControllerSetAbstract
     public function handle()
     {
         $this->module = HuikeModules::where('id', '=', AppRequest::safeInteger('module_id'))->findOrEmpty();
+        if(DataPermission::canEdit($this->module) === false){
+            throw new PermissionException('当前数据状态不可编辑',1);
+        }
         if ($this->module->isEmpty()) {
             throw new ControllersServiceException('未找到ID为【' . AppRequest::safeInteger('module_id') . '】的模块', 1, NoticeType::DIALOG_ERROR);
         }
