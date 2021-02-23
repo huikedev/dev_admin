@@ -16,8 +16,8 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "huikedev/huike_generator": "^0.0",
-        "huikedev/huike_base": "^0.0"
+        "huikedev/huike_generator": "^1.0",
+        "huikedev/huike_base": "^1.0"
     },
 
     "extra": {
