@@ -29,7 +29,7 @@ class HuikeModels extends Migrator
     public function change()
     {
 
-	//原始表创建于：2021-02-22 02:17:13,数据库迁移文件生成于：2021-02-23 04:06:48
+	//原始表创建于：2021-02-23 19:58:19,数据库迁移文件生成于：2021-02-23 21:06:57
 		$table = $this->table('huike_models')->setCollation('utf8mb4_general_ci')->setEngine('InnoDB');
 		$table->setId('id')
 			->addColumn(Column::string('model_name',255)->setComment('模型名称'))
@@ -49,6 +49,7 @@ class HuikeModels extends Migrator
 			->addColumn(Column::string('migrate_file',255)->setDefault('')->setComment('数据库迁移文件'))
 			->addColumn(Column::string('seed_file',255)->setDefault('')->setComment('数据库种子文件'))
 			->addColumn(Column::integer('creator_id')->setDefault(0)->setComment('创建人ID'))
+			->addColumn(Column::tinyInteger('edit_level')->setDefault(0)->setComment(''))
 			->addColumn(Column::integer('delete_time')->setDefault(0)->setComment('标记删除')->setUnsigned())
 			->addColumn(Column::integer('create_time')->setDefault(0)->setComment('创建时间')->setUnsigned())
 			->addColumn(Column::integer('update_time')->setDefault(0)->setComment('更新时间')->setUnsigned())

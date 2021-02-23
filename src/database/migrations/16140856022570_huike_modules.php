@@ -29,7 +29,7 @@ class HuikeModules extends Migrator
     public function change()
     {
 
-	//原始表创建于：2021-02-22 02:17:13,数据库迁移文件生成于：2021-02-23 04:06:29
+	//原始表创建于：2021-02-23 19:58:41,数据库迁移文件生成于：2021-02-23 21:06:42
 		$table = $this->table('huike_modules')->setCollation('utf8mb4_general_ci')->setEngine('InnoDB')->setComment('应用模块');
 		$table->setId('id')
 			->addColumn(Column::string('module_name',50)->setComment('模块名称（英文），即目录名称'))
@@ -39,6 +39,7 @@ class HuikeModules extends Migrator
 			->addColumn(Column::json('bind_domain')->setComment('绑定域名')->setNullable())
 			->addColumn(Column::integer('extend_module_id')->setDefault(0)->setComment('第三方模块扩展ID'))
 			->addColumn(Column::integer('creator_id')->setDefault(0)->setComment('创建人ID'))
+			->addColumn(Column::tinyInteger('edit_level')->setDefault(0)->setComment(''))
 			->addColumn(Column::integer('create_time')->setDefault(0)->setComment('创建时间')->setUnsigned())
 			->addColumn(Column::integer('update_time')->setDefault(0)->setComment('最后更新时间')->setUnsigned())
 			->addColumn(Column::integer('delete_time')->setDefault(0)->setComment('软删除时间')->setUnsigned())
