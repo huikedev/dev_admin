@@ -29,7 +29,7 @@ class HuikeFacades extends Migrator
     public function change()
     {
 
-	//原始表创建于：2021-02-23 19:57:55,数据库迁移文件生成于：2021-02-23 21:06:38
+	//原始表创建于：2021-02-23 19:57:55,数据库迁移文件生成于：2021-02-23 22:16:30
 		$table = $this->table('huike_facades')->setCollation('utf8mb4_general_ci')->setEngine('InnoDB');
 		$table->setId('id')
 			->addColumn(Column::string('origin_class',255)->setComment('原始类名称'))

@@ -100,37 +100,4 @@ class Controllers extends BaseLogic
         return $this;
     }
 
-	 /**
-	 * @desc 前缀列表
-	 * @huike logic
-	 * @return self
-	 * @throws AppLogicException
-	 */
-	public function prefix():self
-	{
-		try{
-			$this->data = ControllersService::prefix();
-		}catch (AppServiceException $serviceException){
-			throw new AppLogicException($serviceException);
-		}
-		return $this;
-	}
-
-
-	 /**
-	 * @desc 控制器目录
-	 * @huike logic
-	 * @return self
-	 * @throws AppLogicException
-	 */
-	public function pathList():self
-	{
-		try{
-			$this->data = ControllersService::pathList();
-		}catch (AppServiceException $serviceException){
-			throw new AppLogicException($serviceException);
-		}
-		return $this;
-	}
-
 }

@@ -49,27 +49,4 @@ class Controllers extends DevController
         return $this->response->render();
     }
 
-	 /**
-	 * @desc 前缀列表
-	 * @huike controller
-	 * @return mixed
-	 * @throws ResponseException
-	 */
-	public function prefix()
-	{
-		return $this->response->render();
-	}
-
-
-	 /**
-	 * @desc 控制器目录
-	 * @huike controller
-	 * @return mixed
-	 * @throws ResponseException
-	 */
-	public function pathList()
-	{
-		return $this->response->render();
-	}
-
 }

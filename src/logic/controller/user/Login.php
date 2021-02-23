@@ -27,22 +27,4 @@ class Login extends BaseLogic
         }
         return $this;
     }
-
-	 /**
-	 * @desc 测试
-	 * @huike logic
-	 * @return self
-	 * @throws AppLogicException
-	 */
-	public function Test():self
-	{
-	    //$this->returnType = AppResponseType::HTML;
-		try{
-			$this->data = LoginService::Test();
-		}catch (AppServiceException $serviceException){
-			throw new AppLogicException($serviceException);
-		}
-		return $this;
-	}
-
 }

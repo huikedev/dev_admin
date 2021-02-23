@@ -1,5 +1,4 @@
 
-
 	//======================开发辅助 - 登录======================
 	Route::group('login',function(){
 		//登录 - 登录
@@ -10,6 +9,8 @@
 	Route::group('user',function(){
 		//用户 - 用户详情
 		Route::get('getUserInfo', 'getUserInfo');
+		//用户 - 退出登录
+		Route::get('logout', 'logout');
 	})->prefix('dev.user.User/');
 
 	//======================开发辅助 - 门面======================
@@ -94,8 +95,6 @@
 		Route::get('checkException', 'checkException');
 		//控制器 - 简单列表
 		Route::get('simpleList', 'simpleList');
-		//控制器 - 目录列表
-		Route::get('pathList', 'pathList');
 	})->prefix('dev.system.Controllers/');
 
 	//======================开发辅助 - 模块管理======================

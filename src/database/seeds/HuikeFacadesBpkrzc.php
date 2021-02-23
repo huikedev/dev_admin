@@ -2,7 +2,7 @@
 
 use think\migration\Seeder;
 
-class HuikeFacadesKsbmfv extends Seeder
+class HuikeFacadesBpkrzc extends Seeder
 {
     /**
      * Run Method.

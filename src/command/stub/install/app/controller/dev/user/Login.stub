@@ -16,9 +16,4 @@ class Login extends DevController
         return $this->response->render();
     }
 
-    public function test()
-    {
-        return $this->response->render();
-    }
-
 }

@@ -2,7 +2,7 @@
 
 use think\migration\Seeder;
 
-class HuikeModulesXbzmeo extends Seeder
+class HuikeModulesJyadqb extends Seeder
 {
     /**
      * Run Method.
