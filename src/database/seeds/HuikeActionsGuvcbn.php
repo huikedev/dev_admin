@@ -2,7 +2,7 @@
 
 use think\migration\Seeder;
 
-class HuikeActionsCgpumf extends Seeder
+class HuikeActionsGuvcbn extends Seeder
 {
     /**
      * Run Method.

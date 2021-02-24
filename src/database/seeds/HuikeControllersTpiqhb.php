@@ -2,7 +2,7 @@
 
 use think\migration\Seeder;
 
-class HuikeControllersIfqekc extends Seeder
+class HuikeControllersTpiqhb extends Seeder
 {
     /**
      * Run Method.

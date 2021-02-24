@@ -29,7 +29,7 @@ class HuikeModels extends Migrator
     public function change()
     {
 
-	//原始表创建于：2021-02-23 19:58:19,数据库迁移文件生成于：2021-02-23 22:16:47
+	//原始表创建于：2021-02-23 19:58:19,数据库迁移文件生成于：2021-02-24 10:10:08
 		$table = $this->table('huike_models')->setCollation('utf8mb4_general_ci')->setEngine('InnoDB');
 		$table->setId('id')
 			->addColumn(Column::string('model_name',255)->setComment('模型名称'))

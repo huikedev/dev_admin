@@ -11,7 +11,7 @@
  Target Server Version : 50730
  File Encoding         : 65001
 
- Date: 23/02/2021 21:05:59
+ Date: 24/02/2021 10:11:20
 */
 
 SET NAMES utf8mb4;
@@ -42,7 +42,7 @@ CREATE TABLE `huike_actions`  (
   `delete_time` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '软删除时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `controller_id`(`controller_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 57 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '控制器方法' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 58 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '控制器方法' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of huike_actions
@@ -79,7 +79,6 @@ INSERT INTO `huike_actions` VALUES (29, 'unSynced', '未同步列表', 11, 'unSy
 INSERT INTO `huike_actions` VALUES (30, 'sync', '同步', 11, 'sync', 1, 'bool', 1, 6, 1, '控制器同步成功', 1, 21, '', 1, 1612179914, 1612179914, 0);
 INSERT INTO `huike_actions` VALUES (31, 'checkException', '查询异常码', 11, 'checkException', 0, 'array_object', 1, 0, 1, '', 1, 21, '', 1, 1612179937, 1612179937, 0);
 INSERT INTO `huike_actions` VALUES (32, 'simpleList', '简单列表', 11, 'simpleList', 0, 'array', 1, 0, 1, '', 1, 21, '', 1, 1612179955, 1612179955, 0);
-INSERT INTO `huike_actions` VALUES (33, 'pathList', '目录列表', 11, 'pathList', 0, 'array', 1, 0, 1, '', 1, 21, '', 1, 1612179980, 1612179980, 0);
 INSERT INTO `huike_actions` VALUES (34, 'index', '列表', 12, 'index', 0, 'paginator', 1, 0, 1, '', 1, 21, '', 1, 1612179992, 1612179992, 0);
 INSERT INTO `huike_actions` VALUES (35, 'create', '新增', 12, 'create', 1, 'bool', 1, 9, 1, '模块创建成功', 1, 21, '', 1, 1612180010, 1612180010, 0);
 INSERT INTO `huike_actions` VALUES (37, 'simpleList', '简单列表', 12, 'simpleList', 0, 'array', 1, 0, 1, '', 1, 21, '', 1, 1612180052, 1612180052, 0);
@@ -100,6 +99,7 @@ INSERT INTO `huike_actions` VALUES (53, 'edit', '修改', 21, 'edit', 1, 'bool',
 INSERT INTO `huike_actions` VALUES (54, 'delete', '删除', 21, 'delete', 1, 'bool', 1, 9, 1, '控制器目录删除成功！', 1, 21, '删除', 1, 1613797768, 1613797768, 0);
 INSERT INTO `huike_actions` VALUES (55, 'simpleList', '简单列表', 21, 'simpleList', 0, 'array', 1, 0, 1, '', 1, 21, '', 1, 1613804705, 1614015881, 0);
 INSERT INTO `huike_actions` VALUES (56, 'refreshException', '刷新异常配置', 12, 'refreshException', 1, 'bool', 1, 6, 1, '刷新异常配置文件成功', 1, 21, '', 1, 1614006250, 1614006250, 0);
+INSERT INTO `huike_actions` VALUES (57, 'logout', '退出登录', 6, 'logout', 0, 'bool', 0, 0, 1, '', 0, 0, '', 1, 1614088754, 1614088754, 0);
 
 -- ----------------------------
 -- Table structure for huike_controllers
@@ -165,13 +165,12 @@ CREATE TABLE `huike_developer`  (
   `update_time` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `username`(`username`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '管理员用户表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '管理员用户表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of huike_developer
 -- ----------------------------
-INSERT INTO `huike_developer` VALUES (1, 'huikedev', '$2y$10$SU1k1zhH3dodNXXmspk0nORR9N.2GrbTGH0N.FF4E5HB8PPxBDV9u', 9, '127.0.0.1', 1614080937, '127.0.0.1', 1614076087, 1, 0, 1589639264, 1614080937);
-INSERT INTO `huike_developer` VALUES (2, 'admin', '$2y$10$QB01lb3vLTomVF7qy/dSB.FaQ5ZNUzxMQiotbkYDbaKllYrDNac/W', 19, '', 0, '', 0, 1, 1613645933, 1613645831, 1613645933);
+INSERT INTO `huike_developer` VALUES (1, 'huikedev', '$2y$10$7fn5WF3a3wFPk7R.HaghXuoUCr2CX1t2CjzACBP.9lOdg/mwI0G7y', 9, '127.0.0.1', 1614132509, '127.0.0.1', 1614089776, 1, 0, 1589639264, 1614132509);
 
 -- ----------------------------
 -- Table structure for huike_extend_modules
@@ -186,16 +185,12 @@ CREATE TABLE `huike_extend_modules`  (
   `root_base_controller` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '模块控制器基类',
   `root_base_logic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '模块控制器基类',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '三方模块' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '三方模块' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of huike_extend_modules
 -- ----------------------------
-INSERT INTO `huike_extend_modules` VALUES (1, 'huikedev/wap', 'huikedev/wap', '', '', '', '');
-INSERT INTO `huike_extend_modules` VALUES (2, 'huikedev\\wap', 'huikedev\\wap', '', '', '', '');
-INSERT INTO `huike_extend_modules` VALUES (3, 'huikedev\\dev_admin\\src', 'huikedev\\dev_admin', 'huikedev\\dev_admin\\common\\exception\\DevServiceException', 'huikedev\\dev_admin\\common\\DevModel', 'huikedev\\dev_admin\\common\\DevController', '');
-INSERT INTO `huike_extend_modules` VALUES (4, 'huikedev\\web\\src', 'huikedev\\web', '', '', '', '');
-INSERT INTO `huike_extend_modules` VALUES (5, 'huikedev\\web\\src', 'huikedev\\web', '', '', '', '');
+INSERT INTO `huike_extend_modules` VALUES (1, 'huikedev\\dev_admin\\src', 'huikedev\\dev_admin', 'huikedev\\dev_admin\\common\\exception\\DevServiceException', 'huikedev\\dev_admin\\common\\DevModel', 'huikedev\\dev_admin\\common\\DevController', '');
 
 -- ----------------------------
 -- Table structure for huike_facades
@@ -260,13 +255,13 @@ CREATE TABLE `huike_models`  (
 -- ----------------------------
 -- Records of huike_models
 -- ----------------------------
-INSERT INTO `huike_models` VALUES (1, 'HuikeModules', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeModules', 1, 1, '', '', '', '应用模块', 1, 1, 1, 1, 0, '16140243892549', '16140243892549_huike_modules', 'HuikeModulesUswntj', 1, 21, 0, 1610780264, 1614024421);
-INSERT INTO `huike_models` VALUES (2, 'HuikeControllers', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeControllers', 1, 1, '', '', '', '后端控制器', 0, 1, 1, 1, 0, '16140243934350', '16140243934350_huike_controllers', 'HuikeControllersCmbxfp', 1, 21, 0, 1610780264, 1614024425);
-INSERT INTO `huike_models` VALUES (3, 'HuikeActions', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeActions', 1, 1, '', '', '', '逻辑方法', 1, 1, 1, 1, 0, '16140243992269', '16140243992269_huike_actions', 'HuikeActionsTspqze', 1, 21, 0, 1610780264, 1614024428);
-INSERT INTO `huike_models` VALUES (4, 'HuikeDeveloper', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeDeveloper', 1, 1, '', '', '', '开发者信息', 0, 1, 1, 1, 0, '16140244043294', '16140244043294_huike_developer', 'HuikeDeveloperNjywvg', 1, 21, 0, 1610780264, 1614024433);
-INSERT INTO `huike_models` VALUES (5, 'HuikeExtendModules', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeExtendModules', 1, 1, '', '', '', '第三方模块信息', 0, 0, 0, 0, 0, '16140243808384', '16140243808384_huike_extend_modules', 'HuikeExtendModulesQvrosa', 1, 21, 0, 1610780264, 1614024414);
-INSERT INTO `huike_models` VALUES (6, 'HuikeFacades', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeFacades', 1, 1, '', '', '', '应用门面', 0, 1, 1, 1, 0, '16140243848677', '16140243848677_huike_facades', 'HuikeFacadesKqsnpe', 1, 21, 0, 1610780264, 1614024417);
-INSERT INTO `huike_models` VALUES (7, 'HuikeModels', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeModels', 1, 1, '', '', '', '应用模型', 0, 1, 1, 1, 1, '16140855111129', '16140855111129_huike_models', 'HuikeModelsQrsjlw', 1, 21, 0, 1610780264, 1614085511);
+INSERT INTO `huike_models` VALUES (1, 'HuikeModules', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeModules', 1, 1, '', '', '', '应用模块', 1, 1, 1, 1, 0, '16141325966838', '16141325966838_huike_modules', 'HuikeModulesWogcut', 1, 21, 0, 1610780264, 1614132621);
+INSERT INTO `huike_models` VALUES (2, 'HuikeControllers', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeControllers', 1, 1, '', '', '', '后端控制器', 0, 1, 1, 1, 0, '16141325995566', '16141325995566_huike_controllers', 'HuikeControllersTpiqhb', 1, 21, 0, 1610780264, 1614132624);
+INSERT INTO `huike_models` VALUES (3, 'HuikeActions', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeActions', 1, 1, '', '', '', '逻辑方法', 1, 1, 1, 1, 0, '16141326023468', '16141326023468_huike_actions', 'HuikeActionsGuvcbn', 1, 21, 0, 1610780264, 1614132627);
+INSERT INTO `huike_models` VALUES (4, 'HuikeDeveloper', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeDeveloper', 1, 1, '', '', '', '开发者信息', 0, 1, 1, 1, 0, '16141326053686', '16141326053686_huike_developer', 'HuikeDeveloperWsvzcn', 1, 21, 0, 1610780264, 1614132630);
+INSERT INTO `huike_models` VALUES (5, 'HuikeExtendModules', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeExtendModules', 1, 1, '', '', '', '第三方模块信息', 0, 0, 0, 0, 0, '16141325904496', '16141325904496_huike_extend_modules', 'HuikeExtendModulesZhjcsm', 1, 21, 0, 1610780264, 1614132615);
+INSERT INTO `huike_models` VALUES (6, 'HuikeFacades', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeFacades', 1, 1, '', '', '', '应用门面', 0, 1, 1, 1, 0, '16141325936372', '16141325936372_huike_facades', 'HuikeFacadesAdkltm', 1, 21, 0, 1610780264, 1614132618);
+INSERT INTO `huike_models` VALUES (7, 'HuikeModels', 'huikedev\\dev_admin\\common\\model\\huike\\HuikeModels', 1, 1, '', '', '', '应用模型', 0, 1, 1, 1, 1, '16141326089697', '16141326089697_huike_models', 'HuikeModelsZeihrm', 1, 21, 0, 1610780264, 1614132633);
 
 -- ----------------------------
 -- Table structure for huike_modules
@@ -293,7 +288,7 @@ CREATE TABLE `huike_modules`  (
 -- ----------------------------
 -- Records of huike_modules
 -- ----------------------------
-INSERT INTO `huike_modules` VALUES (1, 'dev', '开发辅助', 'dev', '[\"huikedev\\\\dev_admin\\\\common\\\\middlewares\\\\DevRouteMiddleware\"]', '[\"huike.local\"]', 3, 1, 21, 1612095224, 1614000712, 0);
+INSERT INTO `huike_modules` VALUES (1, 'dev', '开发辅助', 'dev', '[\"huikedev\\\\dev_admin\\\\common\\\\middlewares\\\\DevRouteMiddleware\"]', '[\"huike.local\"]', 1, 1, 21, 1612095224, 1614000712, 0);
 
 -- ----------------------------
 -- Table structure for migrations

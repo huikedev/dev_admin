@@ -2,7 +2,7 @@
 
 use think\migration\Seeder;
 
-class HuikeExtendModulesHbsfon extends Seeder
+class HuikeExtendModulesZhjcsm extends Seeder
 {
     /**
      * Run Method.

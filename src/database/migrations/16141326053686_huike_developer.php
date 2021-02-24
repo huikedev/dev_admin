@@ -29,7 +29,7 @@ class HuikeDeveloper extends Migrator
     public function change()
     {
 
-	//原始表创建于：2021-02-23 04:14:34,数据库迁移文件生成于：2021-02-23 22:16:44
+	//原始表创建于：2021-02-23 04:14:34,数据库迁移文件生成于：2021-02-24 10:10:05
 		$table = $this->table('huike_developer')->setCollation('utf8mb4_general_ci')->setEngine('InnoDB')->setComment('管理员用户表');
 		$table->setId('id')
 			->addColumn(Column::string('username',50)->setComment('用户名'))

@@ -29,7 +29,7 @@ class HuikeActions extends Migrator
     public function change()
     {
 
-	//原始表创建于：2021-02-23 19:31:24,数据库迁移文件生成于：2021-02-23 22:16:40
+	//原始表创建于：2021-02-23 19:31:24,数据库迁移文件生成于：2021-02-24 10:10:02
 		$table = $this->table('huike_actions')->setCollation('utf8mb4_general_ci')->setEngine('InnoDB')->setComment('控制器方法');
 		$table->setId('id')
 			->addColumn(Column::string('action_name',255)->setComment('方法名'))

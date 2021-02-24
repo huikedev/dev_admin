@@ -29,7 +29,7 @@ class HuikeControllers extends Migrator
     public function change()
     {
 
-	//原始表创建于：2021-02-23 19:57:24,数据库迁移文件生成于：2021-02-23 22:16:37
+	//原始表创建于：2021-02-23 19:57:24,数据库迁移文件生成于：2021-02-24 10:09:59
 		$table = $this->table('huike_controllers')->setCollation('utf8mb4_general_ci')->setEngine('InnoDB')->setComment('后端控制器节点');
 		$table->setId('id')
 			->addColumn(Column::string('controller_name',50)->setComment('控制器标识'))
