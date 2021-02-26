@@ -21,7 +21,7 @@ class DevAuthProvider extends AuthAbstract
     protected function auth()
     {
         if(AppRequest::getTokenName() === Config::get('huike.admin_token_key')){
-            $uid = intval(AppRequest::getTokenName());
+            $uid = intval(AppRequest::getToken());
             $this->setUserId($uid);
         }else{
             $this->token = AppRequest::getToken();
